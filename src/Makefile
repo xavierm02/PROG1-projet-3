@@ -1,9 +1,9 @@
 CC=g++
-CFLAGS=-W -Wall -ansi -pedantic `sdl-config --cflags --libs` 
+CFLAGS=-W -Wall -ansi -pedantic `sdl-config --cflags --libs`
 LDFLAGS=
 
-INCLUDE=`sdl-config --cflags` -I. -I./include 
-LIBS=`sdl-config --libs` 
+INCLUDE=`sdl-config --cflags` -I. -I./include
+LIBS=`sdl-config --libs`
 
 EXEC=main
 SRC= $(wildcard *.cpp)
