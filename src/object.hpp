@@ -6,18 +6,16 @@
 #include "ray.hpp"
 #include "color.hpp"
 
-using namespace rt;
-
 class object {
-protected: 
-	color _color;
+protected:
+  rt::color _color;
 
 public:
-	color get_color();
-	void set_color(color c);
-	virtual bool does_intersect(ray r);
-	virtual vector intersection(ray r);
-	virtual vector normal_vector(ray r);
+  rt::color get_color();
+  void set_color(rt::color color);
+  virtual bool does_intersect(ray ray);
+  virtual rt::vector intersection(ray ray);
+  virtual rt::vector normal_vector(ray ray);
 };
 
 #endif

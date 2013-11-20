@@ -6,3 +6,11 @@ ray::ray(const rt::vector& origin, const rt::vector& direction, const rt::color&
   _color = color;
   _intensity = intensity;
 }
+
+rt::vector ray::get_origin() {
+  return _origin;
+}
+
+rt::vector ray::get_direction() {
+  return _direction;
+}

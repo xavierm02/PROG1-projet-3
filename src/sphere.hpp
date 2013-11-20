@@ -1,26 +1,23 @@
 #ifndef __SPHERE_H
 #define __SPHERE_H
 
-#include "object.hpp"
-#include "sphere.hpp"
+
 #include "vector.hpp"
-#include "color.hpp"
 #include "ray.hpp"
 
-using namespace rt;
-
-class sphere : public object {
+class sphere {
 private:
-	vector _center;
-	unsigned double _radius;
+  rt::vector _center;
+  double _radius;
+  rt::color _color;
 public:
-	vector get_center();
-	void set_center(vector c);
-	unsigned double get_radius();
-	void set_radius(unsigned double r);
-	bool does_intersect(ray r);
-	vector intersection(ray r);
-	vector normal_vector(ray r);
+  rt::vector get_center();
+  void set_center(rt::vector c);
+  double get_radius();
+  void set_radius(double r);
+  bool does_intersect(ray r);
+  rt::vector intersection(ray r);
+  rt::vector normal_vector(ray r);
 };
 
 #endif

@@ -7,16 +7,16 @@
 
 class plan : public object {
 private:
-	vector _origin;
-	vector _normal_vector;
+  rt::vector _origin;
+  rt::vector _normal_vector;
 public:
-	vector get_origin();
-	void set_origin(vector o);
-	vector get_normal_vector();
-	void set_normal_vector(vector n);
+  rt::vector get_origin();
+  void set_origin(rt::vector o);
+  rt::vector get_normal_vector();
+  void set_normal_vector(rt::vector n);
 
-	bool does_intersect(ray r);
-	vector intersection(ray r);
+  bool does_intersect(ray r);
+  rt::vector intersection(ray r);
 };
 
 #endif
