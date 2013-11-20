@@ -31,5 +31,8 @@ object scene::get_object(int i) {
 	return _objects[i];
 }
 
+bool scene::empty_object() {
+	return _objects.empty();
+}
 
 

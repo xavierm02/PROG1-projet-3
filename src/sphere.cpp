@@ -86,4 +86,36 @@ rt::vector sphere::intersection(ray r) {
 }
 
 
+double sphere::dist(ray r) {
+
+	rt::vector u = r.get_direction().unit();
+  rt::vector v = _center - r.get_origin();
+
+  double a = (u.norm())*(u.norm());
+  double b = -2*(u|v);
+  double c = (v.norm())*(v.norm()) - _radius*_radius;
+
+  double delta = b*b - 4*a*c;
+
+  double t1 = (-1*b - std::sqrt(delta))/(2*a);
+  double t2 = (-1*b + std::sqrt(delta))/(2*a);
+
+  double t;
+
+  if (t1 > 0)
+  {
+    t = t1;  //on prend le t le plus petit
+  }
+  else
+  {
+    t = t2;
+  }
+
+  return t;
+}
+
+
+
+
+
 

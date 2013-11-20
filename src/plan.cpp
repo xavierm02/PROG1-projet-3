@@ -47,9 +47,16 @@ bool plan::does_intersect(ray r) {
 rt::vector plan::intersection(ray r) {
 
     double t = ( (_origin|_normal_vector)-(r.get_origin()|_normal_vector) )/(r.get_direction()|_normal_vector);
-
-    return (r.get_origin()+(t*r.get_direction()));
+	return (r.get_origin()+(t*r.get_direction()));
 }
+
+double plan::dist(ray r) {
+    double t = ( (_origin|_normal_vector)-(r.get_origin()|_normal_vector) )/(r.get_direction().unit()|_normal_vector);
+	return t;
+}
+
+
+
 
 
 

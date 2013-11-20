@@ -25,6 +25,8 @@ class scene {
 		source get_source(int i);
 		object get_object(int i);
 
+		bool empty_object();
+
 };
 
 #endif

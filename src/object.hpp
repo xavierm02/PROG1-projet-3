@@ -16,6 +16,7 @@ public:
   virtual bool does_intersect(ray ray);
   virtual rt::vector intersection(ray ray);
   virtual rt::vector normal_vector(ray ray);
+	virtual double dist(ray ray);
 };
 
 #endif
