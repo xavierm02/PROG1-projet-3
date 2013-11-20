@@ -3,6 +3,9 @@
 #include "ray.hpp"
 #include <iostream>
 
+
+object object::DEFAULT;
+
 rt::color object::get_color() {
   return _color;
 }

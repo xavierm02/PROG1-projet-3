@@ -11,6 +11,9 @@ protected:
   rt::color _color;
 
 public:
+
+	static object DEFAULT;
+
   rt::color get_color();
   void set_color(rt::color color);
   virtual bool does_intersect(ray ray);
