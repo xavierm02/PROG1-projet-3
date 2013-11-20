@@ -85,6 +85,5 @@ rt::vector sphere::intersection(ray r) {
   return (r.get_origin() + t*u);
 }
 
-rt::vector sphere::normal_vector(ray r) {}
 
 
