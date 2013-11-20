@@ -2,19 +2,29 @@
 #include "sphere.hpp"
 #include "vector.hpp"
 #include "color.hpp"
+#include "ray.hpp"
 #include <iostream>
 
-class plan : public object {
-private:
-  rt::vector _origin;
-  rt::vector _normal_vector;
-public:
-  rt::vector get_origin() {return _origin;}
-  void set_origin(rt::vector o) {_origin = o;}
-  rt::vector get_normal_vector() {return _normal_vector;}
-  void set_normal_vector(rt::vector n) {_normal_vector = n;}
+#include "plan.hpp"
 
-  bool does_intersect(ray r) {
+
+rt::vector plan::get_origin() {
+	return _origin;
+}
+
+void plan::set_origin(rt::vector o) {
+	_origin = o;
+}
+
+rt::vector plan::get_normal_vector() {
+	return _normal_vector;
+}
+
+void plan::set_normal_vector(rt::vector n) {
+	_normal_vector = n;
+}
+
+bool plan::does_intersect(ray r) {
     if ( (r.get_direction()|_normal_vector)==0)
     {
       return false; //rayon parallèle au plan
@@ -32,16 +42,22 @@ public:
         return true;
       }
     }
-  }
+}
 
-  rt::vector intersection(ray r) {
+rt::vector plan::intersection(ray r) {
 
     double t = ( (_origin|_normal_vector)-(r.get_origin()|_normal_vector) )/(r.get_direction()|_normal_vector);
+	return (r.get_origin()+(t*r.get_direction()));
+}
 
-    return (r.get_origin()+(t*r.get_direction()));
-  }
+double plan::dist(ray r) {
+    double t = ( (_origin|_normal_vector)-(r.get_origin()|_normal_vector) )/(r.get_direction().unit()|_normal_vector);
+	return t;
+}
 
-  rt::vector normal_vector(ray r) {}
-};
+
+
+
+
 
 

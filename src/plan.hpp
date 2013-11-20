@@ -17,6 +17,7 @@ public:
 
   bool does_intersect(ray r);
   rt::vector intersection(ray r);
+	double dist(ray r);
 };
 
 #endif

@@ -17,7 +17,8 @@ public:
   void set_radius(double r);
   bool does_intersect(ray r);
   rt::vector intersection(ray r);
-  rt::vector normal_vector(ray r);
+	double dist(ray r);
+
 };
 
 #endif
