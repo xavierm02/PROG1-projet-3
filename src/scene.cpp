@@ -36,3 +36,49 @@ bool scene::empty_object() {
 }
 
 
+
+bool scene::does_intersect(ray ray) {
+
+	bool b(false);
+
+	int i;
+
+	for (i=0; i< objects.size(); i++)
+	{
+		object obj = objects[i];
+		
+		if (obj.does_intersect(ray)) 
+		{
+			b = true;
+		}
+	}
+	return b;
+}
+
+object scene::first_object(ray ray) {
+
+	double dist_mini = -1;
+	
+	object closest(object::DEFAULT);
+	int i;
+
+	for (i=0; i<objects.size(); i++) 
+	{
+		object obj = objects[i];
+		
+		if (obj.does_intersect(ray))
+		{
+			if (obj.dist(ray) >= 0 && ((dist_mini == -1)||(obj.dist(ray) < dist_mini && (dist_mini != -1) )))
+			{
+				dist_mini = obj.dist(ray);
+				closest = obj;
+			}
+		}
+	} 
+	return closest;
+}
+
+color scene::choose_color(rt::vector p, object obj) { //depend pas du rayon : premiere version
+
+ 
+

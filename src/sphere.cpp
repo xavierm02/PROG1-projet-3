@@ -114,6 +114,11 @@ double sphere::dist(ray r) {
   return t;
 }
 
+bool is_lighted(rt::vector p, source s) {
+
+	let normal_vector = p- _center;
+	return ( (normal_vector|(s.get_origin() - p)) > 0);
+}
 
 
 

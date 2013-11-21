@@ -12,6 +12,7 @@ class ray {
     double _intensity;
   public:
     ray(const rt::vector& origin, const rt::vector& direction, const rt::color& color, double intensity);
+	ray(const rt::vector& origin, const rt::vector& direction);
     rt::vector get_origin();
     rt::vector get_direction();
 };

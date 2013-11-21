@@ -27,6 +27,11 @@ class scene {
 
 		bool empty_object();
 
+		bool does_intersect(ray ray);
+		object first_object(ray ray);
+
+		
+
 };
 
 #endif

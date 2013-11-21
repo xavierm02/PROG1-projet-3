@@ -18,6 +18,7 @@ public:
   bool does_intersect(ray r);
   rt::vector intersection(ray r);
 	double dist(ray r);
+	bool is_lighted(rt::vector p, source s);
 
 };
 

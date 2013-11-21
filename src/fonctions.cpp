@@ -4,45 +4,31 @@
 #include "object.hpp"
 
 
-bool does_intersect(scene scene, ray ray) {
-
-	bool b(false);
-
-	int i;
-
-	for (i=0; i< scene.nb_objects(); i++)
+bool is_lighted(object obj, rt::vector p, scene s) {
+	
+	int i,j;
+	bool b;	
+	
+	for (i=0; i < s.nb_sources(); i++)
 	{
-		object obj = scene.get_object(i);
-		
-		if (obj.does_intersect(ray)) 
+		ray ray(s.get_source(i).get_origin(), p - s.get_source(i).get_origin()); 		
+		b = true;		
+
+		for(j=0; j < s.nb_objects(); j++)
 		{
-			b = true;
+			if (s.get_object(j).does_intersect(ray)) 
+			{
+				b = false;
+			}	
 		}
+		if (b) {return true;} 
 	}
-	return b;
+	return false;
 }
 
-object first_object(scene scene, ray ray) {
-
-	double dist_mini = -1;
-	
-	object closest(object::DEFAULT);
-	int i;
-
-	for (i=0; i<scene.nb_objects(); i++) 
-	{
-		object obj = scene.get_object(i);
-		
-		if (obj.does_intersect(ray))
-		{
-			if (obj.dist(ray) >= 0 && ((dist_mini == -1)||(obj.dist(ray) < dist_mini && (dist_mini != -1) )))
-			{
-				dist_mini = obj.dist(ray);
-				closest = obj;
-			}
-		}
-	} 
-	return closest;
+rt::color color_returned(object obj, rt::vector p, scene s) {
+	if (is_lighted(object obj, rt::vector p, scene s)) {return (obj.get_color());}
+	else {return rt::color::BLACK;}
 }
 
 

@@ -5,6 +5,7 @@
 #include "vector.hpp"
 #include "ray.hpp"
 #include "color.hpp"
+#include "source.hpp"
 
 class object {
 protected:
@@ -20,6 +21,7 @@ public:
   virtual rt::vector intersection(ray ray);
   virtual rt::vector normal_vector(ray ray);
 	virtual double dist(ray ray);
+	virtual bool is_lighted(rt::vector p, source s);
 };
 
 #endif
