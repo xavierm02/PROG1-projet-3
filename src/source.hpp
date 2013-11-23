@@ -12,8 +12,8 @@ class source {
   public:
     source(const rt::vector& origin, const rt::color& color);
 
-  rt::color get_color() const;
-  rt::vector get_origin() const;
+    rt::color get_color() const;
+    rt::vector get_origin() const;
 };
 
 #endif
