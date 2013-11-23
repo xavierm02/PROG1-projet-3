@@ -4,14 +4,14 @@ ray::ray(const rt::vector& origin, const rt::vector& direction, const rt::color&
   color(color), direction(direction), origin(origin) {
 }
 
-rt::vector ray::get_origin() {
-  return origin;
+rt::color ray::get_color() const {
+  return color;
 }
 
-rt::vector ray::get_direction() {
+rt::vector ray::get_direction() const {
   return direction;
 }
 
-rt::color ray::get_color() {
-  return color;
+rt::vector ray::get_origin() const {
+  return origin;
 }

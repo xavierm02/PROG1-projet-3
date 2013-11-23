@@ -9,11 +9,13 @@ class ray {
     rt::color color;
     rt::vector direction;
     rt::vector origin;
+
   public:
     ray(const rt::vector& origin, const rt::vector& direction, const rt::color& color);
-    rt::color get_color();
-    rt::vector get_direction();
-    rt::vector get_origin();
+
+    rt::color get_color() const;
+    rt::vector get_direction() const;
+    rt::vector get_origin() const;
 };
 
 #endif
