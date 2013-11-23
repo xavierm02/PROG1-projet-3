@@ -88,7 +88,7 @@ rt::vector sphere::intersection(ray r) {
 
 double sphere::dist(ray r) {
 
-	rt::vector u = r.get_direction().unit();
+  rt::vector u = r.get_direction().unit();
   rt::vector v = _center - r.get_origin();
 
   double a = (u.norm())*(u.norm());
@@ -114,10 +114,10 @@ double sphere::dist(ray r) {
   return t;
 }
 
-bool is_lighted(rt::vector p, source s) {
+bool sphere::is_lighted(rt::vector p, source s) {
 
-	let normal_vector = p- _center;
-	return ( (normal_vector|(s.get_origin() - p)) > 0);
+  rt::vector normal_vector = p - _center;
+  return ( (normal_vector|(s.get_origin() - p)) > 0);
 }
 
 

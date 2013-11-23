@@ -21,40 +21,36 @@
 
 #include "image.hpp"
 
-namespace rt {
+/**
+ * The screen class inherites from the image class in order
+ * to draw something on the screen. It also wraps the SDL
+ * initialization calls. Only one screen should be created.
+ * If a second screen instance is created, it gets attached
+ * to the first one and the width and height are ignored.
+ */
+class screen : public image {
+private:
+  static int initialized; /*!< Indicates how many instances of screen exist. */
+  static SDL_Surface* buffer; /*!< Pointer to the screen's buffer. */
 
-	/**
-	 * The screen class inherites from the image class in order
-	 * to draw something on the screen. It also wraps the SDL
-	 * initialization calls. Only one screen should be created.
-	 * If a second screen instance is created, it gets attached
-	 * to the first one and the width and height are ignored.
-	 */
-	class screen : public image
-	{
-		private:
-			static int initialized; /*!< Indicates how many instances of screen exist. */
-			static SDL_Surface* buffer; /*!< Pointer to the screen's buffer. */
+public:
+  /**
+   * Main constructor, uses width and height.
+   */
+  screen(int width, int height);
 
-		public:
-			/**
-			 * Main constructor, uses width and height.
-			 */
-			screen(int width, int height);
+  /**
+   * Destructor. Decrements the initialized
+   * counter and closes the screen only if it goes to 0.
+   */
+  virtual ~screen();
 
-			/**
-			 * Destructor. Decrements the initialized
-			 * counter and closes the screen only if it goes to 0.
-			 */
-			virtual ~screen();
+  /**
+   * Flushes the buffer to the screen, listen to event.
+   * Returns false if a QUIT event (^C for exemple) has
+   * been received.
+   */
+  virtual bool update();
+};
 
-			/**
-			 * Flushes the buffer to the screen, listen to event.
-			 * Returns false if a QUIT event (^C for exemple) has
-			 * been received.
-			 */
-			virtual bool update();
-	};
-
-}
 #endif

@@ -16,13 +16,18 @@
 #ifndef __RECT_H
 #define __RECT_H
 
-/**
- * The rect class just renames the SDL_Rect structure.
- * It provides signed short x and y for the upper-left corner's coordinates,
- * and unsigned short w and h for width and height.
- */
-class rect : public SDL_Rect {
+namespace rt {
 
-};
+	/**
+	 * The rect class just renames the SDL_Rect structure.
+	 * It provides signed short x and y for the upper-left corner's coordinates,
+	 * and unsigned short w and h for width and height.
+	 */
+	class rect : public SDL_Rect
+	{
+
+	};
+
+}
 
 #endif

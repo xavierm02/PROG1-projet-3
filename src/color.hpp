@@ -17,122 +17,110 @@
 
 #include "SDL.h"
 
-namespace rt {
+/**
+ * The color class represents a color through its
+ * four components: red, green, blue and alpha (RGBA).
+ */
+class color {
+private:
+  unsigned char red, green, blue, alpha; /*!< Red, green blue and alpha components */
 
-	/**
-	 * The color class represents a color through its
-	 * four components: red, green, blue and alpha (RGBA).
-	 */
-	class color
-	{
-		private:
-			unsigned char red, green, blue, alpha; /*!< Red, green blue and alpha components */
+public:
 
-		public:
+  static color WHITE;
+  static color BLACK;
+  static color BLUE;
+  static color GREEN;
+  static color RED;
 
-			static color WHITE;
-			static color BLACK;
-			static color BLUE;
-			static color GREEN;
-			static color RED;
+  /**
+   * Default constructor. Builds a white color.
+   */
+  color();
 
-			/**
-			 * Default constructor. Builds a white color.
-			 */
-			color();
+  /**
+   * Copy constructor.
+   */
+  color(const color& c);
 
-			/**
-			 * Copy constructor.
-			 */
-			color(const color& c);
+  /**
+   * Builds a color from its red, green and blue components.
+   * Alpha is set to 255.
+   */
+  color(unsigned char r, unsigned char g, unsigned char b);
 
-			/**
-			 * Builds a color from its red, green and blue components.
-			 * Alpha is set to 255.
-			 */
-			color(unsigned char r, unsigned char g, unsigned char b);
+  /**
+   * Builds a color from its red, green, blue and alpha components.
+   */
+  color(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 
-			/**
-			 * Builds a color from its red, green, blue and alpha components.
-			 */
-			color(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
+  /**
+   * Sets the red component.
+   */
+  virtual inline void set_red(unsigned char r) {
+    red = r;
+  }
 
-			/**
-			 * Sets the red component.
-			 */
-			virtual inline void set_red(unsigned char r)
-			{
-				red = r;
-			}
+  /**
+   * Returns the red component.
+   */
+  virtual inline unsigned char get_red() const {
+    return red;
+  }
 
-			/**
-			 * Returns the red component.
-			 */
-			virtual inline unsigned char get_red() const
-			{
-				return red;
-			}
+  /**
+   * Sets the green component.
+   */
+  virtual inline void set_green(unsigned char g) {
+    green = g;
+  }
 
-			/**
-			 * Sets the green component.
-			 */
-			virtual inline void set_green(unsigned char g)
-			{
-				green = g;
-			}
+  /**
+   * Returns the green component.
+   */
+  virtual inline unsigned char get_green() const {
+    return green;
+  }
 
-			/**
-			 * Returns the green component.
-			 */
-			virtual inline unsigned char get_green() const
-			{
-				return green;
-			}
+  /**
+   * Sets the blue component.
+   */
+  virtual inline void set_blue(unsigned char b) {
+    blue = b;
+  }
 
-			/**
-			 * Sets the blue component.
-			 */
-			virtual inline void set_blue(unsigned char b)
-			{
-				blue = b;
-			}
+  /**
+   * Returns the blue component.
+   */
+  virtual inline unsigned char get_blue() const {
+    return blue;
+  }
 
-			/**
-			 * Returns the blue component.
-			 */
-			virtual inline unsigned char get_blue() const
-			{
-				return blue;
-			}
+  /**
+   * Sets the alpha component.
+   */
+  virtual inline void set_alpha(unsigned char a) {
+    alpha = a;
+  }
 
-			/**
-			 * Sets the alpha component.
-			 */
-			virtual inline void set_alpha(unsigned char a)
-			{
-				alpha = a;
-			}
+  /**
+   * Returns the alpha component.
+   */
+  virtual inline unsigned char get_alpha() const {
+    return alpha;
+  }
 
-			/**
-			 * Returns the alpha component.
-			 */
-			virtual inline unsigned char get_alpha() const
-			{
-				return alpha;
-			}
+  /**
+   * Comparison operator.
+   */
+  virtual bool operator==(const color& c) const;
 
-			/**
-			 * Comparison operator.
-			 */
-			virtual bool operator==(const color& c) const;
+  /**
+   * Cast operator to int.
+   * Represents the color as a int, with
+   * red being the most significant byte.
+   */
+  virtual operator int() const;
+};
 
-			/**
-			 * Cast operator to int.
-			 * Represents the color as a int, with
-			 * red being the most significant byte.
-			 */
-			virtual operator int() const;
-	};
-
-}
 #endif
