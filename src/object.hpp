@@ -6,6 +6,7 @@
 #include "ray.hpp"
 #include "color.hpp"
 #include "source.hpp"
+#include "option.hpp"
 
 class object {
 protected:
@@ -13,6 +14,8 @@ protected:
 
 public:
   rt::color get_color() const;
+
+  virtual option<rt::vector> get_point_of_incidence_of(ray ray) = 0;
 };
 
 #endif

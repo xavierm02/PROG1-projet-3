@@ -1,7 +1,4 @@
-#include "object.hpp"
-#include "vector.hpp"
-#include "color.hpp"
-#include "ray.hpp"
+#include <cmath>
 
 #include "plane.hpp"
 
@@ -17,36 +14,18 @@ rt::vector plane::get_origin() const {
   return origin;
 }
 
-bool plane::does_intersect(ray ray) {
+option<rt::vector> plane::get_point_of_incidence_of(ray ray) {
     if ((ray.get_direction() ^ normal_vector).norm() <= 0.001) {// TODO global epsilon?
       // ray parallel to the plane
-      return false;
+      return option<rt::vector>(false, rt::vector());
     } else {
       double a = (origin - ray.get_origin()) | normal_vector;
       double b = ray.get_direction() | normal_vector;
-      if (a * b < 0) {
+      if (std::signbit(a) != std::signbit(b)) {
         // ray going away from the plane
-        return false;
+        return option<rt::vector>(false, rt::vector());
       } else {
-        return true;
+        return option<rt::vector>(true, ray.get_origin() + (a/b) * ray.get_direction());
       }
     }
 }
-/*
-rt::vector plan::intersection(ray r) {
-
-    double t = ( (_origin|_normal_vector)-(r.get_origin()|_normal_vector) )/(r.get_direction()|_normal_vector);
-  return (r.get_origin()+(t*r.get_direction()));
-}
-
-double plan::dist(ray r) {
-    double t = ( (_origin|_normal_vector)-(r.get_origin()|_normal_vector) )/(r.get_direction().unit()|_normal_vector);
-  return t;
-}
-
-*/
-
-
-
-
-
