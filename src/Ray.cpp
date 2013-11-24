@@ -1,11 +1,7 @@
 #include "Ray.hpp"
 
-Ray::Ray(const Point& origin, const rt::vector& direction, const rt::color& color = rt::color::WHITE) :
-  color(color), direction(direction), origin(origin) {
-}
-
-rt::color Ray::get_color() const {
-  return color;
+Ray::Ray(const Point& origin, const rt::vector& direction) :
+  direction(direction.unit()), origin(origin) {
 }
 
 rt::vector Ray::get_direction() const {

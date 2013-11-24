@@ -7,14 +7,12 @@
 
 class Ray {
   private:
-    rt::color color;
     rt::vector direction;
     Point origin;
 
   public:
-    Ray(const Point& origin, const rt::vector& direction, const rt::color& color);
+    Ray(const Point& origin, const rt::vector& direction);
 
-    rt::color get_color() const;
     rt::vector get_direction() const;
     Point get_origin() const;
 };

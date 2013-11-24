@@ -3,7 +3,7 @@
 #include "Plane.hpp"
 
 Plane::Plane(const Point& origin, rt::vector& normal_vector) :
-  normal_vector(normal_vector), origin(origin) {
+  normal_vector(normal_vector.unit()), origin(origin) {
 }
 
 Plane* Plane::clone() const {

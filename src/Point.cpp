@@ -4,6 +4,14 @@ Point::Point(rt::vector position) :
   position(position) {
 }
 
+Point::Point(double a, double b, double c) :
+  position(rt::vector(a, b, c)) {
+}
+
+Point::Point() :
+  position(rt::vector()) {
+}
+
 bool Point::operator==(const Point& other) const {
   return position == other.position;
 }

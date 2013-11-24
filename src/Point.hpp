@@ -9,6 +9,8 @@ class Point {
 
   public:
     Point(rt::vector position);
+    Point(double a, double b, double c);
+    Point();
 
     bool operator==(const Point& other) const;
 

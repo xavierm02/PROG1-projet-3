@@ -14,7 +14,7 @@ class Camera {
     rt::vector up;
   public:
     Camera(const rt::image& image, const Point& origin, const rt::vector& direction, const rt::vector& up, double distance);
-    //void update_image();
+    void update_image();
 };
 
 #endif
