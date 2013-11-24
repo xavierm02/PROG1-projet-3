@@ -3,7 +3,7 @@
 
 #include <stdexcept>
 template <typename T>
-class Option {
+class Option {/*
 private:
   bool is_defined;
   union {
@@ -30,7 +30,7 @@ public:
     } else {
       throw (std::logic_error ("Trying to get value of an option equal to none."));
     }
-  };
+  };*/
 };
 
 #endif

@@ -14,7 +14,7 @@ protected:
 public:
   rt::color get_color() const;
 
-  virtual Option<rt::vector> get_point_of_incidence_of(Ray ray) = 0;
+  virtual rt::vector get_point_of_incidence_of(Ray ray) = 0;
 };
 
 #endif
