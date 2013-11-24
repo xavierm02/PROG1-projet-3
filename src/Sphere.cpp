@@ -19,7 +19,7 @@ double Sphere::get_radius() {
   return radius;
 }
 
-bool Sphere::intersects(Ray ray, double *distance) {
+bool Sphere::intersects(const Ray& ray, double *distance) {
 
   rt::vector u = ray.get_direction();
   rt::vector v = center - ray.get_origin();

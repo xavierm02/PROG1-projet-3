@@ -17,7 +17,7 @@ public:
   rt::vector get_center();
   double get_radius();
 
-  bool intersects(Ray ray, double *distance);
+  bool intersects(const Ray& ray, double *distance);
 };
 
 #endif

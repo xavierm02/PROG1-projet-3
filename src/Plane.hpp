@@ -18,7 +18,7 @@ public:
   rt::vector get_normal_vector() const;
   rt::vector get_origin() const;
 
-  bool intersects(Ray ray, double *distance);
+  bool intersects(const Ray& ray, double *distance);
 };
 
 #endif

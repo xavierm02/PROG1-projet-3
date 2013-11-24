@@ -18,7 +18,7 @@ rt::vector Plane::get_origin() const {
   return origin;
 }
 
-bool Plane::intersects(Ray ray, double *distance) {
+bool Plane::intersects(const Ray& ray, double *distance) {
     if ((ray.get_direction() ^ normal_vector).norm() <= 0.001) {// TODO global epsilon?
       // The ray is parallel to the plane
       return false;

@@ -16,7 +16,7 @@ public:
 
   rt::color get_color() const;
 
-  virtual bool intersects(Ray ray, double *distance) = 0;
+  virtual bool intersects(const Ray& ray, double *distance) = 0;
 };
 
 #endif
