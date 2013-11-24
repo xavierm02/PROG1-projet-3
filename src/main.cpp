@@ -14,10 +14,12 @@ int main(void)
   double camera_distance = 1.0;
   Camera camera = Camera(screen, camera_origin, camera_direction, camera_up, camera_distance);
 
+  Scene scene = Scene();
+
+  camera.render(scene);
   screen.update();
   while(screen.wait_quit_event()) {
     // wait for an input from user
   }
-
   return 0;
 }
