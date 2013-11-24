@@ -4,6 +4,7 @@
 #include "image.hpp"
 #include "vector.hpp"
 #include "Point.hpp"
+#include "Scene.hpp"
 
 class Camera {
   private:
@@ -14,7 +15,7 @@ class Camera {
     rt::vector up;
   public:
     Camera(const rt::image& image, const Point& origin, const rt::vector& direction, const rt::vector& up, double distance);
-    void update_image();
+    void render(const Scene& scene);
 };
 
 #endif

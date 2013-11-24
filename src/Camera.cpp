@@ -5,7 +5,7 @@ Camera::Camera(const rt::image& image, const Point& origin, const rt::vector& di
   direction(direction.unit()), distance(distance), image(image), origin(origin), up(up.unit()) {
 }
 
-void Camera::update_image() {
+void Camera::render(const Scene& scene) {
   int width = image.width();
   int height = image.height();
   Point center_of_image = origin + distance*direction;
@@ -15,7 +15,7 @@ void Camera::update_image() {
     for (int y=0; y<width; ++y) {
       Point pixel_center = upper_left_corner_of_image + x * right + y * up;
       Ray ray = Ray(origin, pixel_center - origin);
-      // TODO
+      scene.determine_color(ray);
     }
   }
 }

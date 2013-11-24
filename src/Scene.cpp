@@ -21,12 +21,12 @@ std::vector<Object*>::const_iterator Scene::get_objects_iterator() {
 
 // todo detect blocked light faster by stopping at first item in between
 
-const Object* Scene::closest_intersected_object(const Ray& ray) {
+const Object* Scene::closest_intersected_object(const Ray& ray) const {
 
   double minimal_distance = std::numeric_limits<double>::infinity();
   Object *closest_intersected_object = 0;
 
-  for (std::vector<Object*>::iterator it = objects.begin(); it != objects.end(); ++it) {
+  for (std::vector<Object*>::const_iterator it = objects.begin(); it != objects.end(); ++it) {
     double distance = 0;
     if ((*it)->intersects(ray, &distance)) {
       if (distance < minimal_distance) {
@@ -36,4 +36,8 @@ const Object* Scene::closest_intersected_object(const Ray& ray) {
     }
   }
   return closest_intersected_object;
+}
+
+rt::color Scene::determine_color(const Ray& ray) const {
+  return rt::color::WHITE;
 }
