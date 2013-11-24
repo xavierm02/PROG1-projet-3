@@ -39,5 +39,10 @@ const Object* Scene::closest_intersected_object(const Ray& ray) const {
 }
 
 rt::color Scene::determine_color(const Ray& ray) const {
-  return rt::color::RED;
+  const Object *object = this->closest_intersected_object(ray);
+  if (object == 0) {
+    return rt::color::RED;
+  } else {
+    return object->get_color();
+  }
 }

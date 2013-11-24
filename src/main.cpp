@@ -3,23 +3,22 @@
 
 #include "screen.hpp"
 #include "Camera.hpp"
+#include "Plane.hpp"
 
 int main(void)
 {
   rt::screen screen = rt::screen(640,480);
 
-  rt::vector camera_origin = rt::vector(0,0,0);
-  rt::vector camera_direction = rt::vector(1,0,0);
-  rt::vector camera_up = rt::vector(0,0,1);
-  double camera_distance = 1.0;
-  Camera camera = Camera(screen, camera_origin, camera_direction, camera_up, camera_distance);
+  Camera camera = Camera(screen, Point(0,0,0), rt::vector(1,0,0), rt::vector(0,0,1), 1.0);
 
   Scene scene = Scene();
 
+  Plane floor = Plane(Point(0,0,0), rt::vector(0,0,1));
+
+  scene.add_object(floor);
+
   camera.render(scene);
   screen.update();
-  while(screen.wait_quit_event()) {
-    // wait for an input from user
-  }
+  screen.wait_quit_event();
   return 0;
 }

@@ -2,7 +2,7 @@
 
 #include "Plane.hpp"
 
-Plane::Plane(const Point& origin, rt::vector& normal_vector) :
+Plane::Plane(const Point& origin, const rt::vector& normal_vector) :
   normal_vector(normal_vector.unit()), origin(origin) {
 }
 

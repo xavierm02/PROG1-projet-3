@@ -11,7 +11,7 @@ private:
   rt::vector normal_vector;
   Point origin;
 public:
-  Plane(const Point& origin, rt::vector& normal_vector);
+  Plane(const Point& origin, const rt::vector& normal_vector);
 
   Plane* clone() const;
 
