@@ -1,17 +1,17 @@
 CC=g++
-CFLAGS=-W -Wall -ansi -pedantic `sdl-config --cflags --libs` 
+CFLAGS=-W -Wall -ansi -pedantic `sdl-config --cflags --libs`
 LDFLAGS=
 
-INCLUDE=`sdl-config --cflags` -I. -I./include 
-LIBS=`sdl-config --libs` 
+INCLUDE=`sdl-config --cflags` -I. -I./include
+LIBS=`sdl-config --libs`
 
-EXEC=main
+EXEC=main.bin
 SRC= $(wildcard *.cpp)
 OBJ= $(SRC:.cpp=.o)
 
 all: $(EXEC)
 
-main: $(OBJ)
+$(EXEC): $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 %.o: %.cpp
