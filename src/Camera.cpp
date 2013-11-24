@@ -15,7 +15,8 @@ void Camera::render(const Scene& scene) {
     for (int y=0; y<width; ++y) {
       Point pixel_center = upper_left_corner_of_image + x * right + y * up;
       Ray ray = Ray(origin, pixel_center - origin);
-      scene.determine_color(ray);
+      rt:: color color = scene.determine_color(ray);
+      image.set_pixel(x, y, color);
     }
   }
 }

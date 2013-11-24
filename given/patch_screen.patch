@@ -1,0 +1,57 @@
+diff --git a/screen.cpp b/screen.cpp
+index c221df9..2d31f9a 100644
+--- a/screen.cpp
++++ b/screen.cpp
+@@ -44,21 +44,23 @@ namespace rt {
+ 		}
+ 	}
+ 
+-	bool screen::update()
++	void screen::update()
+ 	{
+ 		if(data != NULL)
+ 			SDL_Flip(data);
++	}
+ 
++	bool screen::wait_quit_event()
++	{
+ 		SDL_Event event;
+-		/* Check for events */
+-		while(SDL_PollEvent(&event)) {
++		while(SDL_WaitEvent(&event)) {
+ 			switch(event.type) {
+ 				case SDL_QUIT:
+-					return false;
++					return true;
+ 					break;
+ 			}
+ 		}
+-		return true;
++		return false;
+ 	}
+ 
+ }
+diff --git a/screen.hpp b/screen.hpp
+index 41a9dae..805d874 100644
+--- a/screen.hpp
++++ b/screen.hpp
+@@ -49,11 +49,15 @@ namespace rt {
+ 			virtual ~screen();
+ 
+ 			/**
+-			 * Flushes the buffer to the screen, listen to event.
+-			 * Returns false if a QUIT event (^C for exemple) has
+-			 * been received.
++			 * Flushes the buffer to the screen
+ 			 */
+-			virtual bool update();
++			virtual void update();
++
++			/**
++			 * @brief wait indefinitely for the next quit event
++			 * @return true if we get a quit event, or false if there was an error while waiting for the quit event
++			 */
++			bool wait_quit_event();
+ 	};
+ 
+ }
