@@ -9,14 +9,14 @@
 class Plane : public Object {
 private:
   rt::vector normal_vector;
-  rt::vector origin;
+  Point origin;
 public:
-  Plane(rt::vector& origin, rt::vector& normal_vector);
+  Plane(const Point& origin, rt::vector& normal_vector);
 
   Plane* clone() const;
 
   rt::vector get_normal_vector() const;
-  rt::vector get_origin() const;
+  Point get_origin() const;
 
   bool intersects(const Ray& ray, double *distance);
 };

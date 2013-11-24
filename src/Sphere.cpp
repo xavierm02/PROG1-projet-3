@@ -3,7 +3,7 @@
 
 #include "Sphere.hpp"
 
-Sphere::Sphere(const rt::vector& center, double radius) :
+Sphere::Sphere(const Point& center, double radius) :
   center(center), radius(radius) {
 }
 
@@ -11,7 +11,7 @@ Sphere* Sphere::clone() const {
   return new Sphere(*this);
 }
 
-rt::vector Sphere::get_center() {
+Point Sphere::get_center() {
   return center;
 }
 

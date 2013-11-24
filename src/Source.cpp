@@ -5,7 +5,7 @@
 
 
 
-Source::Source(const rt::vector& origin, const rt::color& color = rt::color::WHITE) :
+Source::Source(const Point& origin, const rt::color& color = rt::color::WHITE) :
   color(color), origin(origin) {
 }
 
@@ -13,6 +13,6 @@ rt::color Source::get_color() const {
   return color;
 }
 
-rt::vector Source::get_origin() const {
+Point Source::get_origin() const {
   return origin;
 }

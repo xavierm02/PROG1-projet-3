@@ -7,14 +7,14 @@
 
 class Sphere : public Object {
 private:
-  rt::vector center;
+  Point center;
   double radius;
 
 public:
-  Sphere(const rt::vector& center, double radius);
+  Sphere(const Point& center, double radius);
   Sphere* clone() const;
 
-  rt::vector get_center();
+  Point get_center();
   double get_radius();
 
   bool intersects(const Ray& ray, double *distance);

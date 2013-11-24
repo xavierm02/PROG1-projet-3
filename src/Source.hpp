@@ -3,17 +3,18 @@
 
 #include "vector.hpp"
 #include "color.hpp"
+#include "Point.hpp"
 
 class Source {
   private:
     rt::color color;
-    rt::vector origin;
+    Point origin;
 
   public:
-    Source(const rt::vector& origin, const rt::color& color);
+    Source(const Point& origin, const rt::color& color);
 
     rt::color get_color() const;
-    rt::vector get_origin() const;
+    Point get_origin() const;
 };
 
 #endif
