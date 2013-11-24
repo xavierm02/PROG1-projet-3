@@ -19,7 +19,7 @@ double Sphere::get_radius() {
   return radius;
 }
 
-rt::vector Sphere::get_point_of_incidence_of(Ray ray) {
+bool Sphere::intersects(Ray ray, double *distance) {
 
   rt::vector u = ray.get_direction();
   rt::vector v = center - ray.get_origin();
@@ -35,17 +35,19 @@ rt::vector Sphere::get_point_of_incidence_of(Ray ray) {
   double delta = b*b - 4*a*c;
 
   if (delta <= 0) {
-    throw ("The ray des not intersect the sphere.");
-  } else {
-    double x1 = (-1*b - std::sqrt(delta))/(2*a);
-    double x2 = (-1*b + std::sqrt(delta))/(2*a);
-
-    if (x2 <= 0) {
-      throw ("The ray isn't heading towards the sphere.");
-    } else {
-      return ray.get_origin() + x1*u;
-    }
+    // The ray des not intersect the sphere
+    return false;
   }
+  double x1 = (-1*b - std::sqrt(delta))/(2*a);
+  double x2 = (-1*b + std::sqrt(delta))/(2*a);
+
+  if (x2 <= 0) {
+    // The ray isn't heading towards the sphere
+    return false;
+  }
+
+  *distance = x1;
+  return true;
 }
 
 /*

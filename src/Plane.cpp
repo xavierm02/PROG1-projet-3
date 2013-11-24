@@ -18,17 +18,18 @@ rt::vector Plane::get_origin() const {
   return origin;
 }
 
-rt::vector Plane::get_point_of_incidence_of(Ray ray) {
+bool Plane::intersects(Ray ray, double *distance) {
     if ((ray.get_direction() ^ normal_vector).norm() <= 0.001) {// TODO global epsilon?
-      throw ("The ray is parallel to the plane.");
-    } else {
-      double a = (origin - ray.get_origin()) | normal_vector;
-      double b = ray.get_direction() | normal_vector;
-      if (std::signbit(a) != std::signbit(b)) {
-        throw ("The ray isn't heading towards the plane.");
-      } else {
-        return ray.get_origin() + (a/b) * ray.get_direction();
-      }
+      // The ray is parallel to the plane
+      return false;
     }
+    double a = (origin - ray.get_origin()) | normal_vector;
+    double b = ray.get_direction() | normal_vector;
+    if (std::signbit(a) != std::signbit(b)) {
+      // The ray isn't heading towards the plane
+      return false;
+    }
+    *distance = a / b;
+    return true;
 }
 

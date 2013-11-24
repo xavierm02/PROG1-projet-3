@@ -16,7 +16,7 @@ public:
 
   rt::color get_color() const;
 
-  virtual rt::vector get_point_of_incidence_of(Ray ray) = 0;
+  virtual bool intersects(Ray ray, double *distance) = 0;
 };
 
 #endif
