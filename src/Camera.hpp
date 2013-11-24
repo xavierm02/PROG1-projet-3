@@ -1,19 +1,20 @@
 #ifndef __CAMERA_H
 #define __CAMERA_H
 
-#include "vector.hpp"
 #include "image.hpp"
+#include "vector.hpp"
+#include "Point.hpp"
 
-class camera {/*
+class Camera {
   private:
-    rt::vector origin;
     rt::vector direction;
-    rt::vector up;
-    rt::image image;
     double distance;
+    rt::image image;
+    Point origin;
+    rt::vector up;
   public:
-    camera(const rt::vector& origin, const rt::vector& direction, const rt::vector& up, const rt::image& image, double distance);
-    void update_image();*/
+    Camera(const rt::image& image, const Point& origin, const rt::vector& direction, const rt::vector& up, double distance);
+    //void update_image();
 };
 
 #endif

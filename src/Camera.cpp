@@ -1,12 +1,9 @@
 #include "Camera.hpp"
-/*
-camera::camera(const rt::vector& origin, const rt::vector& direction, const rt::vector& up, const rt::image& image, double distance) : _image(image) {
-  _origin = origin;
-  _direction = direction;
-  _distance = distance;
-  _up = up;
-}
 
+Camera::Camera(const rt::image& image, const Point& origin, const rt::vector& direction, const rt::vector& up, double distance) :
+  direction(direction), distance(distance), image(image), origin(origin), up(up) {
+}
+/*
 void camera::update_image() {
   int width = _image.width();
   int height = _image.height();
