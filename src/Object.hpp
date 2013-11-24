@@ -3,19 +3,18 @@
 
 
 #include "vector.hpp"
-#include "ray.hpp"
 #include "color.hpp"
-#include "source.hpp"
-#include "option.hpp"
+#include "Ray.hpp"
+#include "Option.hpp"
 
-class object {
+class Object {
 protected:
   rt::color color;
 
 public:
   rt::color get_color() const;
 
-  virtual option<rt::vector> get_point_of_incidence_of(ray ray) = 0;
+  virtual Option<rt::vector> get_point_of_incidence_of(Ray ray) = 0;
 };
 
 #endif

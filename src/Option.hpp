@@ -3,17 +3,21 @@
 
 #include <stdexcept>
 template <typename T>
-class option {
+class Option {
 private:
   bool is_defined;
   union {
-    const T value;
+    T value;
     bool _;
   };
 
 public:
-  option(bool is_defined, const T& value) :
-    is_defined(is_defined), value(value) {
+  Option(const T& value) :
+    is_defined(true), value(value) {
+  };
+
+  Option() :
+    is_defined(false) {
   };
 
   bool get_is_defined() const {

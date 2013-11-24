@@ -4,14 +4,14 @@
 #include "color.hpp"
 #include "vector.hpp"
 
-class ray {
+class Ray {
   private:
     rt::color color;
     rt::vector direction;
     rt::vector origin;
 
   public:
-    ray(const rt::vector& origin, const rt::vector& direction, const rt::color& color);
+    Ray(const rt::vector& origin, const rt::vector& direction, const rt::color& color);
 
     rt::color get_color() const;
     rt::vector get_direction() const;
