@@ -20,7 +20,7 @@ class Scene {
     //std::vector<Source>::const_iterator get_sources_iterator() const;
     //std::vector<Object*>::const_iterator get_objects_iterator();
 
-    Object* closest_intersected_object(const Ray& ray);
+    const Object* closest_intersected_object(const Ray& ray);
 };
 
 #endif
