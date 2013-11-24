@@ -12,6 +12,8 @@ protected:
   rt::color color;
 
 public:
+  virtual Object* clone() const = 0;
+
   rt::color get_color() const;
 
   virtual rt::vector get_point_of_incidence_of(Ray ray) = 0;

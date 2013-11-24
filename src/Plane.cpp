@@ -6,6 +6,10 @@ Plane::Plane(rt::vector& origin, rt::vector& normal_vector) :
   normal_vector(normal_vector), origin(origin) {
 }
 
+Plane* Plane::clone() const {
+  return new Plane(*this);
+}
+
 rt::vector Plane::get_normal_vector() const {
   return normal_vector;
 }

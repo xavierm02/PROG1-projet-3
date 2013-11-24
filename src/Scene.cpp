@@ -1,20 +1,21 @@
 #include "Scene.hpp"
 
-void Scene::add_source(Source source) {
+void Scene::add_source(Source& source) {
   sources.push_back(source);
 }
 
-void Scene::add_object(Object *object) {
-  objects.push_back(object);
+void Scene::add_object(Object& object) {
+  Object *copy = object.clone();
+  objects.push_back(copy);
 }
 
 std::vector<Source>::const_iterator Scene::get_sources_iterator() const {
   return sources.begin();
 }
 
-/*std::vector<source>::const_iterator get_objects_iterator() {
-  return objects.cbegin();
-}*/
+std::vector<Object*>::const_iterator Scene::get_objects_iterator() {
+  return objects.begin();
+}
 /*
 bool scene::does_intersect(ray ray) {
 

@@ -13,6 +13,8 @@ private:
 public:
   Plane(rt::vector& origin, rt::vector& normal_vector);
 
+  Plane* clone() const;
+
   rt::vector get_normal_vector() const;
   rt::vector get_origin() const;
 

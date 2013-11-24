@@ -14,11 +14,11 @@ class Scene {
     std::vector<Object*> objects;
 
   public:
-    void add_source(Source source);
-    void add_object(Object *object);
+    void add_source(Source& source);
+    void add_object(Object& object);
 
     std::vector<Source>::const_iterator get_sources_iterator() const;
-    //std::vector<source>::const_iterator get_objects_iterator();
+    std::vector<Object*>::const_iterator get_objects_iterator();
 };
 
 #endif

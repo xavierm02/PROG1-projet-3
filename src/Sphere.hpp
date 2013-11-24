@@ -12,6 +12,7 @@ private:
 
 public:
   Sphere(const rt::vector& center, double radius);
+  Sphere* clone() const;
 
   rt::vector get_center();
   double get_radius();

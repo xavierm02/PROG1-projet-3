@@ -7,6 +7,10 @@ Sphere::Sphere(const rt::vector& center, double radius) :
   center(center), radius(radius) {
 }
 
+Sphere* Sphere::clone() const {
+  return new Sphere(*this);
+}
+
 rt::vector Sphere::get_center() {
   return center;
 }
