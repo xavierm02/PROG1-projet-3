@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include "Plane.hpp"
+#include "Parameters.hpp"
 
 Plane::Plane(const Point& origin, const rt::vector& normal_vector) :
   normal_vector(normal_vector.unit()), origin(origin) {
@@ -23,7 +24,7 @@ rt::vector Plane::get_normal_vector_at(const Point& /*point*/) const {
 }
 
 Option<double> Plane::get_distance_of_incidence_point_of(const Ray& ray) {
-    if ((ray.get_direction() ^ normal_vector).norm() <= 0.001) {// TODO global epsilon?
+    if ((ray.get_direction() ^ normal_vector).norm() <= epsilon) {
       // The ray is parallel to the plane
       return Option<double>();
     }
