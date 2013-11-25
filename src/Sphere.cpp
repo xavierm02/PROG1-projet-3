@@ -12,7 +12,7 @@ Sphere::Sphere(const Point& center, double radius, const Texture& texture) :
 Sphere* Sphere::clone() const {
   return new Sphere(*this);
 }
-
+	
 Point Sphere::get_center() {
   return center;
 }
