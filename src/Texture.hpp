@@ -7,7 +7,7 @@ class Texture {
   private:
     rt::color color;
   public:
-    Texture(const rt::color& color = rt::color::GREEN);
+    Texture(const rt::color& color = rt::color::RED);
 
     rt::color get_color() const;
 };

@@ -3,8 +3,9 @@
 #include "Plane.hpp"
 #include "Parameters.hpp"
 
-Plane::Plane(const Point& origin, const rt::vector& normal_vector) :
+Plane::Plane(const Point& origin, const rt::vector& normal_vector, const Texture& texture) :
   normal_vector(normal_vector.unit()), origin(origin) {
+  this->texture = texture;
 }
 
 Plane* Plane::clone() const {

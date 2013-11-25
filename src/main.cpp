@@ -13,7 +13,7 @@ int main(void)
 
   Scene scene = Scene(rt::color::GREEN);
 
-  Plane floor = Plane(Point(0,0,0), rt::vector(0,0,1));
+  Plane floor = Plane(Point(0,0,0), rt::vector(0,0,1), rt::color::BLUE);
 
   scene.add_object(floor);
 

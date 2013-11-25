@@ -11,7 +11,7 @@ private:
   double radius;
 
 public:
-  Sphere(const Point& center, double radius);
+  Sphere(const Point& center, double radius, const Texture& texture);
   Sphere* clone() const;
 
   Point get_center();

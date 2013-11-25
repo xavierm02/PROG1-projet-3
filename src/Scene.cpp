@@ -59,13 +59,14 @@ rt::color Scene::determine_color(const Ray& ray) const {
   if (propagations_left == 0) {
     return texture.get_color();
   }
-  std::vector< std::pair<Ray,double> > rays;
-  /*
-  rt::vector normal = this -> get_normal_vector_at(point);
+  //std::vector< std::pair<Ray,double> > rays;
+  rt::vector normal = object->get_normal_vector_at(point);
   rt::vector direction = ray.get_direction();
   rt::vector normal_component = (direction|normal) * normal;
-  rt::vector
-  Ray reflection = Ray(point, 2*(ray.get_direction)
-  rays.push_back(std::pair())*/
-  return rt::color::BLUE;//object->get_color();
+  rt::vector radial_component = direction - normal_component;
+
+  //Ray reflection_ray = Ray(point, radial_component - normal_component, propagations_left - 1);
+  //rt::color reflection_color = this->determine_color(reflection_ray);
+
+  return texture.get_color();
 }

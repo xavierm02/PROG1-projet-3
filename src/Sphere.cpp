@@ -3,8 +3,9 @@
 
 #include "Sphere.hpp"
 
-Sphere::Sphere(const Point& center, double radius) :
+Sphere::Sphere(const Point& center, double radius, const Texture& texture) :
   center(center), radius(radius) {
+  this->texture = texture;
 }
 
 Sphere* Sphere::clone() const {
