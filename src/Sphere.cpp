@@ -2,6 +2,7 @@
 #include <cmath>
 
 #include "Sphere.hpp"
+#include "Utils.hpp"
 
 Sphere::Sphere(const Point& center, double radius, const Texture& texture) :
   center(center), radius(radius) {
@@ -38,11 +39,12 @@ Option<double> Sphere::get_distance_of_incidence_point_of(const Ray& ray) {
   double c = (v|v) - radius*radius;
 
   double delta = b*b - 4*a*c;
-
+  std::cout << ray.get_direction() << "\n";
   if (delta <= 0) {
     // The ray des not intersect the sphere
     return Option<double>();
   }
+
   double x1 = (-1*b - std::sqrt(delta))/(2*a);
   double x2 = (-1*b + std::sqrt(delta))/(2*a);
 

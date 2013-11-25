@@ -12,7 +12,7 @@ void Camera::render(const Scene& scene) {
   rt::vector right = direction ^ up;
   Point upper_left_corner_of_image = center_of_image - (width / 2.0) * right - (height / 2.0) * up;
   for (int x=0; x<width; ++x) {
-    for (int y=0; y<width; ++y) {
+    for (int y=0; y<height; ++y) {
       Point pixel_center = upper_left_corner_of_image + x * right + y * up;
       Ray ray = Ray(origin, pixel_center - origin, depth);
       rt:: color color = scene.determine_color(ray);
