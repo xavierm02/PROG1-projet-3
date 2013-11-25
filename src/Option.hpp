@@ -14,6 +14,8 @@ public:
 
   Option(const T& value): defined(true), value(value) {}
 
+  Option(const bool defined, const T& value): defined(defined), value(value) {}
+
   bool is_defined() const {
     return defined;
   }

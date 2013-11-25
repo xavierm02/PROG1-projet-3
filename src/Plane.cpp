@@ -18,7 +18,7 @@ Point Plane::get_origin() const {
   return origin;
 }
 
-rt::vector Plane::get_normal_vector_at(const Point& point) const {
+rt::vector Plane::get_normal_vector_at(const Point& /*point*/) const {
   return normal_vector;
 }
 
