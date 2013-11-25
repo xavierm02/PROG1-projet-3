@@ -12,7 +12,7 @@ Sphere::Sphere(const Point& center, double radius, const Texture& texture) :
 Sphere* Sphere::clone() const {
   return new Sphere(*this);
 }
-	
+
 Point Sphere::get_center() {
   return center;
 }
@@ -51,6 +51,11 @@ Option<double> Sphere::get_distance_of_incidence_point_of(const Ray& ray) {
   if (x2 <= 0) {
     // The ray isn't heading towards the sphere
     return Option<double>();
+  }
+
+  if (x1 <= 0) {
+    // The origin of the ray is in the sphere
+    return Option<double>(x2);
   }
 
   return Option<double>(x1);

@@ -9,9 +9,10 @@ class Point {
     rt::vector position;
 
   public:
-    Point(rt::vector position);
     Point(double a, double b, double c);
     Point();
+
+    static Point of_vector(rt::vector vector);
 
     bool operator==(const Point& other) const;
 

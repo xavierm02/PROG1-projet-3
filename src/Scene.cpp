@@ -2,6 +2,8 @@
 
 #include "Scene.hpp"
 #include "Texture.hpp"
+#include <iostream>
+#include <cmath>
 
 Scene::Scene(const rt::color& background) :
   background(background) {
@@ -43,6 +45,8 @@ const Option< std::pair<Object*, Point> > Scene::get_incidence_point_of(const Ra
   if (closest_intersected_object == 0) {
     return Option< std::pair<Object*, Point> >(false, std::pair<Object*, Point>());
   }
+
+  //std::cout << ray.get_origin() + (1/(ray.get_direction() | rt::vector(1,0,0))) * ray.get_direction() << "   " << minimal_distance << "\n";
   return Option< std::pair<Object*, Point> >( std::pair<Object*, Point>(closest_intersected_object, ray.get_origin() + minimal_distance * ray.get_direction()));
 }
 
