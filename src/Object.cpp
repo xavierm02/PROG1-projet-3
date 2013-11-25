@@ -13,3 +13,7 @@ Ray Object::get_reflected_ray(const Ray& ray, const Point& point) const {
   rt::vector radial_component = direction - normal_component;
   return Ray(point, radial_component - normal_component, ray.get_propagations_left() - 1);
 }
+
+std::ostream& operator<<(std::ostream &os, const Object &object) {
+  return object.print(os);
+}

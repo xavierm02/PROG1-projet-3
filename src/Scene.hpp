@@ -20,8 +20,8 @@ class Scene {
     void add_source(Source& source);
     void add_object(Object& object);
 
-    //std::vector<Source>::const_iterator get_sources_iterator() const;
-    //std::vector<Object*>::const_iterator get_objects_iterator();
+    const std::vector<Source> get_sources() const;
+    const std::vector<Object*> get_objects() const;
 
     const Option< std::pair<Object*, Point> > get_incidence_point_of(const Ray& ray) const;
     rt::color determine_color(const Ray& ray) const;

@@ -41,7 +41,7 @@ Option<double> Sphere::get_distance_of_incidence_point_of(const Ray& ray) {
   double delta = b*b - 4*a*c;
   //std::cout << ray.get_direction() << "\n";
   if (delta <= 0) {
-    // The ray des not intersect the sphere
+    // The ray does not intersect the sphere
     return Option<double>();
   }
 
@@ -54,6 +54,10 @@ Option<double> Sphere::get_distance_of_incidence_point_of(const Ray& ray) {
   }
 
   return Option<double>(x1);
+}
+
+std::ostream& Sphere::print(std::ostream &os) const {
+  return os << "Sphere(" << center << ", " << radius << ")";
 }
 
 /*

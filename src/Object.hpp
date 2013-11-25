@@ -22,6 +22,10 @@ public:
   virtual rt::vector get_normal_vector_at(const Point& point) const = 0;
 
   Ray get_reflected_ray(const Ray& ray, const Point& point) const;
+
+  virtual std::ostream& print(std::ostream &os) const = 0;
 };
+
+std::ostream& operator<<(std::ostream &os, const Object &object);
 
 #endif
