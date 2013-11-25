@@ -20,7 +20,7 @@ public:
 
   rt::vector get_normal_vector_at(const Point& point) const;
 
-  bool intersects(const Ray& ray, double *distance);
+  Option<double> get_distance_of_incidence_point_of(const Ray& ray);
 };
 
 #endif

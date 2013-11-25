@@ -17,7 +17,7 @@ public:
 
   Texture get_texture() const;
 
-  virtual bool intersects(const Ray& ray, double *distance) = 0;
+  virtual Option<double> get_distance_of_incidence_point_of(const Ray& ray) = 0;
 
   virtual rt::vector get_normal_vector_at(const Point& point) const = 0;
 

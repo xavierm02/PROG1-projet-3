@@ -23,7 +23,7 @@ rt::vector Sphere::get_normal_vector_at(const Point& point) const {
   return (point - center).unit();
 }
 
-bool Sphere::intersects(const Ray& ray, double *distance) {
+Option<double> Sphere::get_distance_of_incidence_point_of(const Ray& ray) {
 
   rt::vector u = ray.get_direction();
   rt::vector v = center - ray.get_origin();
@@ -40,18 +40,17 @@ bool Sphere::intersects(const Ray& ray, double *distance) {
 
   if (delta <= 0) {
     // The ray des not intersect the sphere
-    return false;
+    return Option<double>();
   }
   double x1 = (-1*b - std::sqrt(delta))/(2*a);
   double x2 = (-1*b + std::sqrt(delta))/(2*a);
 
   if (x2 <= 0) {
     // The ray isn't heading towards the sphere
-    return false;
+    return Option<double>();
   }
 
-  *distance = x1;
-  return true;
+  return Option<double>(x1);
 }
 
 /*

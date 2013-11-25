@@ -31,10 +31,10 @@ const Object* Scene::closest_intersected_object(const Ray& ray) const {
   Object *closest_intersected_object = 0;
 
   for (std::vector<Object*>::const_iterator it = objects.begin(); it != objects.end(); ++it) {
-    double distance = 0;
-    if ((*it)->intersects(ray, &distance)) {
-      if (distance < minimal_distance) {
-        minimal_distance = distance;
+    Option<double> distance = (*it)->get_distance_of_incidence_point_of(ray);
+    if (distance.is_defined()) {
+      if (distance.get_value() < minimal_distance) {
+        minimal_distance = distance.get_value();
         closest_intersected_object = *it;
       }
     }

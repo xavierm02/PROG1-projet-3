@@ -22,18 +22,17 @@ rt::vector Plane::get_normal_vector_at(const Point& point) const {
   return normal_vector;
 }
 
-bool Plane::intersects(const Ray& ray, double *distance) {
+Option<double> Plane::get_distance_of_incidence_point_of(const Ray& ray) {
     if ((ray.get_direction() ^ normal_vector).norm() <= 0.001) {// TODO global epsilon?
       // The ray is parallel to the plane
-      return false;
+      return Option<double>();
     }
     double a = (origin - ray.get_origin()) | normal_vector;
     double b = ray.get_direction() | normal_vector;
     if (std::signbit(a) != std::signbit(b)) {
       // The ray isn't heading towards the plane
-      return false;
+      return Option<double>();
     }
-    *distance = a / b;
-    return true;
+    return Option<double>(a / b);
 }
 
