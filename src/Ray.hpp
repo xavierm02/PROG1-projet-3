@@ -16,6 +16,7 @@ class Ray {
 
     rt::vector get_direction() const;
     Point get_origin() const;
+    unsigned int get_propagations_left() const;
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include <limits>
 
 #include "Scene.hpp"
+#include "Texture.hpp"
 
 Scene::Scene(const rt::color& background) :
   background(background) {
@@ -50,7 +51,16 @@ rt::color Scene::determine_color(const Ray& ray) const {
   if (! result.is_defined()) {
     return background;
   }
-  std::vector< std::pair<Ray,double> > rays;/*
+  std::pair<Object*, Point> pair = result.get_value();
+  Object *object = pair.first;
+  Point point = pair.second;
+  Texture texture = object->get_texture();
+  unsigned int propagations_left = ray.get_propagations_left();
+  if (propagations_left == 0) {
+    return texture.get_color();
+  }
+  std::vector< std::pair<Ray,double> > rays;
+  /*
   rt::vector normal = this -> get_normal_vector_at(point);
   rt::vector direction = ray.get_direction();
   rt::vector normal_component = (direction|normal) * normal;

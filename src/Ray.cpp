@@ -11,3 +11,7 @@ rt::vector Ray::get_direction() const {
 Point Ray::get_origin() const {
   return origin;
 }
+
+unsigned int Ray::get_propagations_left() const {
+  return propagations_left;
+}
