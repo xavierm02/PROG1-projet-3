@@ -10,10 +10,13 @@
 
 class Scene {
   private:
+    rt::color background;
     std::vector<Source> sources;
     std::vector<Object*> objects;
 
   public:
+    Scene(const rt::color& background);
+
     void add_source(Source& source);
     void add_object(Object& object);
 

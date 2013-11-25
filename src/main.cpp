@@ -11,7 +11,7 @@ int main(void)
 
   Camera camera = Camera(screen, Point(0,0,0), rt::vector(1,0,0), rt::vector(0,0,1), 1.0);
 
-  Scene scene = Scene();
+  Scene scene = Scene(rt::color::GREEN);
 
   Plane floor = Plane(Point(0,0,0), rt::vector(0,0,1));
 

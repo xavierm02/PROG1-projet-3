@@ -18,6 +18,8 @@ public:
   rt::vector get_normal_vector() const;
   Point get_origin() const;
 
+  rt::vector get_normal_vector_at(const Point& point) const;
+
   bool intersects(const Ray& ray, double *distance);
 };
 

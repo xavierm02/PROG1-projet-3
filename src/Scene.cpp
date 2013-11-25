@@ -2,6 +2,10 @@
 
 #include "Scene.hpp"
 
+Scene::Scene(const rt::color& background) :
+  background(background) {
+}
+
 void Scene::add_source(Source& source) {
   sources.push_back(source);
 }
@@ -41,8 +45,8 @@ const Object* Scene::closest_intersected_object(const Ray& ray) const {
 rt::color Scene::determine_color(const Ray& ray) const {
   const Object *object = this->closest_intersected_object(ray);
   if (object == 0) {
-    return rt::color::RED;
+    return background;
   } else {
-    return object->get_color();
+    return rt::color::BLUE;//object->get_color();
   }
 }

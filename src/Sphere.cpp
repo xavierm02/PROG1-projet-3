@@ -19,6 +19,10 @@ double Sphere::get_radius() {
   return radius;
 }
 
+rt::vector Sphere::get_normal_vector_at(const Point& point) const {
+  return (point - center).unit();
+}
+
 bool Sphere::intersects(const Ray& ray, double *distance) {
 
   rt::vector u = ray.get_direction();

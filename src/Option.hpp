@@ -1,36 +1,27 @@
 #ifndef __OPTION_H
 #define __OPTION_H
 
+#include <iostream>
 #include <stdexcept>
+
 template <typename T>
-class Option {/*
+class Option {
 private:
-  bool is_defined;
-  union {
-    T value;
-    bool _;
-  };
-
+  bool defined;
+  const T value;
 public:
-  Option(const T& value) :
-    is_defined(true), value(value) {
-  };
+  Option(): defined(false), value(0) {}
 
-  Option() :
-    is_defined(false) {
-  };
+  Option(const T& value): defined(true), value(value) {}
 
-  bool get_is_defined() const {
-    return is_defined;
-  };
+  bool is_defined() const {
+    return defined;
+  }
 
   T get_value() const {
-    if (is_defined) {
-      return value;
-    } else {
-      throw (std::logic_error ("Trying to get value of an option equal to none."));
-    }
-  };*/
+    if (defined) return value;
+    else throw (std::logic_error("Trying to get the value of an undefined option."));
+  }
 };
 
 #endif

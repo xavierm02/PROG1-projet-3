@@ -18,6 +18,8 @@ public:
   double get_radius();
 
   bool intersects(const Ray& ray, double *distance);
+
+  rt::vector get_normal_vector_at(const Point& point) const;
 };
 
 #endif
