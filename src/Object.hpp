@@ -20,6 +20,8 @@ public:
   virtual Option<double> get_distance_of_incidence_point_of(const Ray& ray) = 0;
 
   virtual rt::vector get_normal_vector_at(const Point& point) const = 0;
+
+  Ray get_reflected_ray(const Ray& ray, const Point& point) const;
 };
 
 #endif

@@ -39,7 +39,7 @@ Option<double> Sphere::get_distance_of_incidence_point_of(const Ray& ray) {
   double c = (v|v) - radius*radius;
 
   double delta = b*b - 4*a*c;
-  std::cout << ray.get_direction() << "\n";
+  //std::cout << ray.get_direction() << "\n";
   if (delta <= 0) {
     // The ray des not intersect the sphere
     return Option<double>();
