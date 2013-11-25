@@ -16,10 +16,16 @@ int main(void)
 
   Plane floor = Plane(Point(0,0,0), rt::vector(0,0,1), rt::color::BLUE);
 
-  Sphere ball = Sphere(Point(2,0,0), 1.0, rt::color::BLUE);
+  Sphere ball = Sphere(Point(3,0,0), 0.1, rt::color::BLUE);
 
   //scene.add_object(floor);
   scene.add_object(ball);
+
+  std::cout << ball << "\n";
+  const std::vector<Object*> objects = scene.get_objects();
+  for (std::vector<Object*>::const_iterator it = objects.begin(); it != objects.end(); ++it) {
+    std::cout << **it << "\n";
+  }
 
   camera.render(scene);
   screen.update();

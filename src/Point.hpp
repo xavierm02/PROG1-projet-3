@@ -1,6 +1,7 @@
 #ifndef POINT_H
 #define POINT_H
 
+#include <iostream>
 #include "vector.hpp"
 
 class Point {
@@ -19,6 +20,8 @@ class Point {
     Point operator+(const rt::vector& other) const;
 
     Point operator-(const rt::vector& other) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const Point &point);
 };
 
 #endif

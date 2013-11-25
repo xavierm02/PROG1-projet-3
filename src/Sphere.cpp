@@ -56,6 +56,10 @@ Option<double> Sphere::get_distance_of_incidence_point_of(const Ray& ray) {
   return Option<double>(x1);
 }
 
+std::ostream& Sphere::print(std::ostream &os) const {
+  return os << "Sphere(" << center << ", " << radius << ")";
+}
+
 /*
 bool sphere::is_lighted(rt::vector p, source s) {
 

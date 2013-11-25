@@ -16,13 +16,13 @@ void Scene::add_object(Object& object) {
   objects.push_back(copy);
 }
 
-/*std::vector<Source>::const_iterator Scene::get_sources_iterator() const {
-  return sources.begin();
+const std::vector<Source> Scene::get_sources() const {
+  return sources;
 }
 
-std::vector<Object*>::const_iterator Scene::get_objects_iterator() {
-  return objects.begin();
-}*/
+const std::vector<Object*> Scene::get_objects() const {
+  return objects;
+}
 
 // todo detect blocked light faster by stopping at first item in between
 
