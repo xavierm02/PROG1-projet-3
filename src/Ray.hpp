@@ -9,9 +9,10 @@ class Ray {
   private:
     rt::vector direction;
     Point origin;
+    unsigned int propagations_left;
 
   public:
-    Ray(const Point& origin, const rt::vector& direction);
+    Ray(const Point& origin, const rt::vector& direction, const unsigned int propagations_left);
 
     rt::vector get_direction() const;
     Point get_origin() const;

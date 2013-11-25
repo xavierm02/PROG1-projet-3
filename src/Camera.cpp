@@ -1,8 +1,8 @@
 #include "Camera.hpp"
 #include "Ray.hpp"
 
-Camera::Camera(const rt::image& image, const Point& origin, const rt::vector& direction, const rt::vector& up, double distance) :
-  direction(direction.unit()), distance(distance), image(image), origin(origin), up(up.unit()) {
+Camera::Camera(const rt::image& image, const Point& origin, const rt::vector& direction, const rt::vector& up, double distance, const unsigned int depth) :
+  depth(depth), direction(direction.unit()), distance(distance), image(image), origin(origin), up(up.unit()) {
 }
 
 void Camera::render(const Scene& scene) {
@@ -14,7 +14,7 @@ void Camera::render(const Scene& scene) {
   for (int x=0; x<width; ++x) {
     for (int y=0; y<width; ++y) {
       Point pixel_center = upper_left_corner_of_image + x * right + y * up;
-      Ray ray = Ray(origin, pixel_center - origin);
+      Ray ray = Ray(origin, pixel_center - origin, depth);
       rt:: color color = scene.determine_color(ray);
       image.set_pixel(x, y, color);
     }

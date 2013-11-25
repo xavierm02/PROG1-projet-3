@@ -9,7 +9,7 @@ int main(void)
 {
   rt::screen screen = rt::screen(640,480);
 
-  Camera camera = Camera(screen, Point(0,0,0), rt::vector(1,0,0), rt::vector(0,0,1), 1.0);
+  Camera camera = Camera(screen, Point(0,0,0), rt::vector(1,0,0), rt::vector(0,0,1), 1.0, 2);
 
   Scene scene = Scene(rt::color::GREEN);
 

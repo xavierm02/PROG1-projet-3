@@ -24,7 +24,7 @@ rt::vector Plane::get_normal_vector_at(const Point& /*point*/) const {
 }
 
 Option<double> Plane::get_distance_of_incidence_point_of(const Ray& ray) {
-    if ((ray.get_direction() ^ normal_vector).norm() <= epsilon) {
+    if ((ray.get_direction() ^ normal_vector).norm() <= EPSILON) {
       // The ray is parallel to the plane
       return Option<double>();
     }
