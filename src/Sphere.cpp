@@ -12,7 +12,7 @@ Sphere::Sphere(const Point& center, double radius, const Texture& texture) :
 Sphere* Sphere::clone() const {
   return new Sphere(*this);
 }
-
+	
 Point Sphere::get_center() {
   return center;
 }
@@ -41,7 +41,7 @@ Option<double> Sphere::get_distance_of_incidence_point_of(const Ray& ray) {
   double delta = b*b - 4*a*c;
   //std::cout << ray.get_direction() << "\n";
   if (delta <= 0) {
-    // The ray des not intersect the sphere
+    // The ray does not intersect the sphere
     return Option<double>();
   }
 

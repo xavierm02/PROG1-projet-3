@@ -4,7 +4,7 @@
 #include "object.hpp"
 
 /*
-bool is_lighted(object obj, rt::vector p, scene s) {
+bool is_lighted(object obj, rt::vector p, scene s) { // p : le point de l'objet obj dont on souhaite savoir s'il est éclairé par une des sources de la scene 
 
   int i,j;
   bool b;
