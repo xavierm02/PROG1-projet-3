@@ -33,11 +33,23 @@ Light::Light(const rt::color& color) :
 }
 
 Light Light::operator+(const Light& light) const {
-  return Light(red + light.red, green + light.green, red + light.red);
+  return Light(red + light.red, green + light.green, blue + light.blue);
 }
 
 Light operator*(const double& k, const Light& light) {
-  return Light(k * light.red, k * light.green, k * light.blue);
+  double red = light.red;
+  if (red != 0 ) {
+    red = k * red;
+  }
+  double green = light.green;
+  if (green != 0 ) {
+    green = k * green / 255.0;
+  }
+  double blue = light.blue;
+  if (blue != 0 ) {
+    blue = k * blue / 255.0;
+  }
+  return Light(red, green, blue);
 }
 
 rt::color Light::to_color() const {
