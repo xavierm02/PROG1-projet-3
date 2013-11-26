@@ -4,6 +4,7 @@
 #include <limits>
 #include "Utils.hpp"
 
+/*
 char f(double x) {
   return (unsigned char) (atan(x)/M_PI*2*255);
 }
@@ -11,14 +12,14 @@ char f(double x) {
 double g(unsigned char x) {
   return tan(x*M_PI/2/255);// way too slow
 }
-
-/*char f(double x) {
-  return (unsigned char) (tanh(x/2)*255);
+*/
+char f(double x) {
+  return (unsigned char) (tanh(x)*255);
 }
 
 double g(unsigned char x) {
-  return (atanh(x/255.0)*2);
-}*/
+  return (atanh(x/255.0));
+}
 
 Light::Light() :
   red(0.0), green(0.0), blue(0.0) {
