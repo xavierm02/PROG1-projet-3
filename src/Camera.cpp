@@ -19,10 +19,6 @@ void Camera::render(const Scene& scene) {
       Point pixel_center = bottom_left_corner_of_image + x * right - y * up;
       Ray ray = Ray(origin, pixel_center - origin, depth);
       rt:: color color = scene.determine_light_of(ray).to_color();
-      if (color != rt::color::WHITE && color != rt::color(127,127,127) && color != rt::color::GREEN && color != (Light::GREEN + Light::RED).to_color()) {
-        //std::cout << color << "     " << (Light::GREEN + Light::RED).to_color() << std::endl;
-
-      }
       image.set_pixel(x, y, color);
     }
   }

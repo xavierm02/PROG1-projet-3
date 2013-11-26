@@ -57,7 +57,7 @@ bool Scene::obstructs(const Point& beginning, const Point& end) const {
   for (std::vector<Object*>::const_iterator it = objects.begin(); it != objects.end(); ++it) {
     Option<double> distance = (*it)->get_distance_of_incidence_point_of(ray);
     if (distance.is_defined()) {
-      if (distance.get_value() > EPSILON && abs(distance.get_value() - vector.norm()) > EPSILON) {
+      if (distance.get_value() > EPSILON && std::abs(distance.get_value() - vector.norm()) > EPSILON) {
         return true;
       }
     }
