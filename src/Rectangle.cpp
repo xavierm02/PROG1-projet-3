@@ -12,5 +12,16 @@ Rectangle* Rectangle::clone() const {
 }
 
 Option<double> Rectangle::get_distance_of_incidence_point_of(const Ray& ray) {
-  return Plane::get_distance_of_incidence_point_of(ray);
+  Option<double> result = Plane::get_distance_of_incidence_point_of(ray);
+  if (! result.is_defined()) {
+    return result;
+  }
+  Point point = ray.get_origin() + result.get_value() * ray.get_direction();
+  if (abs((point - origin) | x_direction) >= width / 2) {
+    return Option<double>();
+  }
+  if (abs((point - origin) | y_direction) >= height / 2) {
+    return Option<double>();
+  }
+  return result;
 }
