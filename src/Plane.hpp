@@ -7,10 +7,11 @@
 #include "Option.hpp"
 
 class Plane : public Object {
-private:
+protected:
   rt::vector normal_vector;
   Point origin;
 public:
+  Plane();
   Plane(const Point& origin, const rt::vector& normal_vector, const Texture& texture);
 
   Plane* clone() const;

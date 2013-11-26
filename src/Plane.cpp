@@ -4,6 +4,10 @@
 #include "Parameters.hpp"
 #include "Utils.hpp"
 
+Plane::Plane() :
+  normal_vector(rt::vector()), origin(Point()) {
+}
+
 Plane::Plane(const Point& origin, const rt::vector& normal_vector, const Texture& texture) :
   normal_vector(normal_vector.unit()), origin(origin) {
   this->texture = texture;
