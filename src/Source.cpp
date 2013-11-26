@@ -5,14 +5,18 @@
 
 
 
-Source::Source(const Point& origin, const rt::color& color = rt::color::WHITE) :
-  color(color), origin(origin) {
+Source::Source(const Point& origin, const Light& light) :
+  light(light), origin(origin) {
 }
 
-rt::color Source::get_color() const {
-  return color;
+Light Source::get_light() const {
+  return light;
 }
 
 Point Source::get_origin() const {
   return origin;
+}
+
+Ray Source::send_ray_towards(const Point& point) const {
+  return Ray(origin, point-origin, 0);
 }

@@ -1,4 +1,5 @@
 #include "Rectangle.hpp"
+#include <iostream>
 
 Rectangle::Rectangle(const Point& origin, const rt::vector& x_direction, const rt::vector& y_direction, double width, double height, const Texture& texture) :
   x_direction(x_direction), y_direction(y_direction), width(width), height(height) {

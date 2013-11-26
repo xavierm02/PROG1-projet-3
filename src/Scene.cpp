@@ -4,16 +4,17 @@
 #include "Texture.hpp"
 #include <iostream>
 #include <cmath>
+#include "Parameters.hpp"
 
 Scene::Scene(const rt::color& background) :
   background(background) {
 }
 
-void Scene::add_source(Source& source) {
+void Scene::add_source(const Source& source) {
   sources.push_back(source);
 }
 
-void Scene::add_object(Object& object) {
+void Scene::add_object(const Object& object) {
   Object *copy = object.clone();
   objects.push_back(copy);
 }
@@ -36,7 +37,7 @@ const Option< std::pair<Object*, Point> > Scene::get_incidence_point_of(const Ra
   for (std::vector<Object*>::const_iterator it = objects.begin(); it != objects.end(); ++it) {
     Option<double> distance = (*it)->get_distance_of_incidence_point_of(ray);
     if (distance.is_defined()) {
-      if (distance.get_value() < minimal_distance) {
+      if (distance.get_value() < minimal_distance && distance.get_value() > EPSILON) {
         minimal_distance = distance.get_value();
         closest_intersected_object = *it;
       }
@@ -50,10 +51,34 @@ const Option< std::pair<Object*, Point> > Scene::get_incidence_point_of(const Ra
   return Option< std::pair<Object*, Point> >( std::pair<Object*, Point>(closest_intersected_object, ray.get_origin() + minimal_distance * ray.get_direction()));
 }
 
-rt::color Scene::determine_color(const Ray& ray) const {
+bool Scene::obstructs(const Point& beginning, const Point& end) const {
+  rt::vector vector = end - beginning;
+  Ray ray = Ray(beginning, vector, 0);
+  for (std::vector<Object*>::const_iterator it = objects.begin(); it != objects.end(); ++it) {
+    Option<double> distance = (*it)->get_distance_of_incidence_point_of(ray);
+    if (distance.is_defined()) {
+      if (distance.get_value() > EPSILON && abs(distance.get_value() - vector.norm()) > EPSILON) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+Light Scene::determine_light_from_sources_at(const Point& point) const {
+  Light light = Light();
+  for (std::vector<Source>::const_iterator it = sources.begin(); it != sources.end(); ++it) {
+    if (! this->obstructs(it->get_origin(), point)) {
+      light = light + it->get_light();
+    }
+  }
+  return light;
+}
+
+Light Scene::determine_light_of(const Ray& ray) const {
   const Option< std::pair<Object*, Point> > result = this->get_incidence_point_of(ray);
   if (! result.is_defined()) {
-    return background;
+    return Light(background);
   }
   std::pair<Object*, Point> pair = result.get_value();
   Object *object = pair.first;
@@ -61,12 +86,12 @@ rt::color Scene::determine_color(const Ray& ray) const {
   Texture texture = object->get_texture();
   unsigned int propagations_left = ray.get_propagations_left();
   if (propagations_left == 0) {
-    return texture.get_color();
+    return texture.get_color() ^ this->determine_light_from_sources_at(point);
   }
   //std::vector< std::pair<Ray,double> > rays;
 
   //Ray reflection_ray = object.get_reflected_vector(...);
   //rt::color reflection_color = this->determine_color(reflection_ray);
 
-  return texture.get_color();
+  return texture.get_color() ^ this->determine_light_from_sources_at(point);
 }

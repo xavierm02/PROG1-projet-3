@@ -4,17 +4,21 @@
 #include "vector.hpp"
 #include "color.hpp"
 #include "Point.hpp"
+#include "Ray.hpp"
+#include "Light.hpp"
 
 class Source {
   private:
-    rt::color color;
+    Light light;
     Point origin;
 
   public:
-    Source(const Point& origin, const rt::color& color);
+    Source(const Point& origin, const Light& light);
 
-    rt::color get_color() const;
+    Light get_light() const;
     Point get_origin() const;
+
+    Ray send_ray_towards(const Point& point) const;
 };
 
 #endif

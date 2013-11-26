@@ -39,16 +39,17 @@ Option<double> Sphere::get_distance_of_incidence_point_of(const Ray& ray) {
   double c = (v|v) - radius*radius;
 
   double delta = b*b - 4*a*c;
-  //std::cout << ray.get_direction() << "\n";
+
   if (delta <= 0) {
     // The ray does not intersect the sphere
     return Option<double>();
   }
-
-  double x1 = (-1*b - std::sqrt(delta))/(2*a);
-  double x2 = (-1*b + std::sqrt(delta))/(2*a);
+  //std::cout << delta << "   " << std::sqrt(delta) << "   " << (-b - std::sqrt(delta))/(2*a) << "    " << (-b + std::sqrt(delta))/(2*a) << "\n";
+  double x1 = (-b - std::sqrt(delta))/(2*a);
+  double x2 = (-b + std::sqrt(delta))/(2*a);
 
   if (x2 <= 0) {
+
     // The ray isn't heading towards the sphere
     return Option<double>();
   }
