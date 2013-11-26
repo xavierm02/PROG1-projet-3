@@ -1,12 +1,13 @@
 \documentclass{beamer}
 \usepackage{graphicx}
+\usepackage{latexsym}
 \usepackage[french]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{listings}
 \usetheme{Frankfurt}
 \title{Projet C++ : Lancer de rayons}
-\author{Mathieu Mari \and Xavier Montillet}
+\author{Mathieu \textsc{Mari} \and Xavier \textsc{Montillet}}
 
 \begin{document}
 
@@ -23,6 +24,7 @@
 	\end{frame}
 \section{Principe général}
 	\begin{frame}
+	\begin{block}{Principe général}
 	\begin{itemize}
 		\item On choisit où positionner notre caméra.
 		\item On choisit la position de l'écran.
@@ -36,7 +38,7 @@
 				\item \dots
 			\end{itemize}		
 	\end{itemize}
-
+	\end{block}
 	\end{frame}
 	
 \section{Implémentation}
@@ -46,8 +48,76 @@
     		\includegraphics[height = 7cm]{schema.png}
   		\end{center}
 	\end{frame}	
-		
+
+	\subsection{Classes auxiliaires}
+	\begin{frame}
+		Classes auxiliaires : 
+		\begin{block}{La classe Point} 
+			\begin{itemize}
+				\item Contient uniquement un vecteur.
+				\item Fournit une semantique plus «propre».
+				\item Contrôle les relations entre points et vecteurs.
+			\end{itemize}
+		\end{block} \pause
+
+		\begin{block}{La classe Option}
+			\begin{itemize}
+				\item Permet de detecter si il y a intersection, et de calculer en même temps la distance.
+			\end{itemize}
+		\end{block}
+	\end{frame}
 	
+	\subsection{La classe Light}
+	\begin{frame}{La classe Light}
+		Permet de manipuler les couleurs : \emph{synthese additive\dots}
+		\begin{itemize}
+			\item Addition de deux couleurs composante par composante. 
+			\begin{itemize}
+				\item $255 \leadsto +\infty$
+				\item On module par la fonction $tanh$
+			\end{itemize}
+			\item Addition d'une couleur et d'une lumière : une lumière.
+			\begin{itemize}
+				\item composante rouge $= \frac{r_{color}}{255}r_{light}$
+			\end{itemize}
+		\end{itemize}		
+	\end{frame}
+
+	\subsection{Comment revoyer la couleur d'un pixel ?}
+		\begin{frame}{Comment renvoyer la couleur d'un pixel ?}
+			\begin{itemize}
+				\item Déterminer le premier objet intersécté par le rayon. 
+				\item Pour chaque source éclairant le point d'intersection, multiplier la lumière de la source par la couleur de l'objet.
+				\item Multiplier par le produit scalaire de la normale à l'objet et du vecteur reliant le point à la source.
+				\item Additionner les lumières obtenues sur toutes les sources éclairant l'objet.
+			\end{itemize}
+		\end{frame}	
+	
+	\begin{frame}{Démonstration}
+		\begin{center}		
+			Démonstration !
+		\end{center}
+	\end{frame}
+
+	\section{Amélioration}
+		\begin{frame}{Améliorations}
+			\begin{block}{Amélioration du réalisme}
+				\begin{itemize}
+					
+					\item Réflexions, réfractions
+					\item Transparence	
+					\item Objets plus complexes :
+					\begin{itemize}
+						\item gestion de l'épaisseur.
+						\item gestion de la matière.
+						\item \dots
+					\end{itemize}
+					\item Synthèse de lois physiques plus complexes.
+				\end{itemize}
+			\end{block}
+					
+		On peut également penser à une version \og dynamique \fg du lancer de rayons.
+		\end{frame}
 
 
 
@@ -56,20 +126,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\section{Conclusion}
+	
+	\begin{frame}{Conclusion}
+		\begin{center}		
+			Conclusion !
+		\end{center}
+	\end{frame}
+	
 \end{document}
