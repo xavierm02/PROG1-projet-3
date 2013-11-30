@@ -1,8 +1,6 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-class UnitVector;
-
 class Vector {
   protected:
     double x;

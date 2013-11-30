@@ -6,6 +6,9 @@
 class UnitVector : public Vector {
   public:
     UnitVector(const Vector& vector);
+    UnitVector(double x, double y, double z);
+
+  UnitVector operator-() const;
 };
 
 #endif
