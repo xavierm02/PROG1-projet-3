@@ -60,8 +60,30 @@ Nous avons codé une fonction permettant de transformer une lumière en une coul
 \subsubsection{La classe \emph{Texture}}
 	La couleur d'un pixel dépend de la texture de l'objet visé. En effet, l'effet visuel ne sera pas le même suivant si l'objet est brillant, mate, transparent\dots La classe \emph{Texture} permet donc de représenter ces différentes caractéristiques. Cette classe est essentielle si nous ne voulons pas à chaque fois redéfinir les méthodes de la classe \emph{Object}. 
 
+\subusubsection{Les classes auxiliaires}
+	\begin{description}
+		\item[La classe \emph{Point} : ]
+Cette classe permet de distinguer un vecteur d'un point. Même si on peut représenter un point par un vecteur, il n'est pas très correct d'additionner deux points par exemple. Nous définissons donc des fonctions definissant les opérations entre la classe \emph{Point} et la classe \emph{vector}.
 
+		\item[La classe \emph{Option} : ]
+	\end{itemize}
   
+\section{Comment renvoyer la couleur d'un pixel ?}
+Afin de générer l'image finale, la caméra envoie pour chaque pixel un rayon (de la classe \emph{Ray}) partant de l'objectif et passant par le pixel correspondant. Les programmes que nous avons codé consistent à associer à chacun de ces rayons une couleur.
+
+\subsection{Première étape : Trouver le premier objet de la scène intersécté par le rayon}
+Afin de touver le premier objet de la scène intersecté par le rayon, nous calculons pour chaque objet si le rayon l'intersecte puis parmi tous les objets intersectés nous prenons l'objet le plus proche de la caméra. Dans un deuxième temps nous renvoyons le point $P$ (classe \emph{Point}) d'intersection entre le rayon et l'objet.
+
+\subsection{Deuxième étape : Calcul de la couleur}
+A présent, il faut savoir si le point $P$ est éclairé par les sources lumineuses. Pour cela pour chaque source $S$ de la scene, nous regardons si le rayon reliant $P$ à $S$ intersecte au moins un objet de la scène autre que l'objet courant. si l'objet est une sphère nous verifions également si le cosinus entre la normale au point $P$ et le vecteur $PS$ est positif (le contraire indiquerait que la source se situe de l'autre coté de la sphère).
+Pour chaque composante ($r$ par exemple) nous calculons la lumière résultante par la formule : 
+\begin{equation}
+	$r_{final} = \sum_{s \in \{ \text{sources éclairant} P \}} r_s*\lambda(s)*\frac{r_{objet}{255}}
+\end{equation}
+où $\lambda(s) est le cosinus entre la normale à l'objet en $P$ et le vecteur $PS$. 
+On obtient ainsi une lumière que l'on transforme en couleur grâce à la fonction $\th$
+
+
 
 	
 
