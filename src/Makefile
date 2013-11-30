@@ -6,6 +6,7 @@ INCLUDE=`sdl-config --cflags` -I. -I./include
 LIBS=`sdl-config --libs`
 
 EXEC=./main.bin
+HEADERS= $(wildcard *.hpp)
 SRC= $(wildcard *.cpp)
 OBJ= $(SRC:.cpp=.o)
 
@@ -14,7 +15,7 @@ all: $(EXEC)
 $(EXEC): $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
 
-%.o: %.cpp
+%.o: %.cpp $(HEADERS)
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE)
 
 .PHONY: clean mrproper

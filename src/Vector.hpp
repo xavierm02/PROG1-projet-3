@@ -1,3 +1,5 @@
+#include <iostream>
+
 #ifndef VECTOR_H
 #define VECTOR_H
 
@@ -34,5 +36,7 @@ class Vector {
 
     friend Vector operator/(const Vector& vector, const double& scalar);
 };
+
+std::ostream& operator<<(std::ostream &output_stream, const Vector& vector);
 
 #endif

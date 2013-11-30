@@ -87,3 +87,7 @@ Vector operator/(const Vector& vector, double scalar) {
     vector.get_z() / scalar
   );
 }
+
+std::ostream& operator<<(std::ostream &output_stream, const Vector& vector) {
+  return output_stream << "<" << vector.get_x() << ", " << vector.get_y() << ", " << vector.get_z() << ">";
+}
