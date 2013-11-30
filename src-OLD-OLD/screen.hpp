@@ -49,15 +49,11 @@ namespace rt {
 			virtual ~screen();
 
 			/**
-			 * Flushes the buffer to the screen
+			 * Flushes the buffer to the screen, listen to event.
+			 * Returns false if a QUIT event (^C for exemple) has
+			 * been received.
 			 */
-			virtual void update();
-
-			/**
-			 * @brief wait indefinitely for the next quit event
-			 * @return true if we get a quit event, or false if there was an error while waiting for the quit event
-			 */
-			bool wait_quit_event();
+			virtual bool update();
 	};
 
 }

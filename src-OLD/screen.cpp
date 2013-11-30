@@ -44,21 +44,23 @@ namespace rt {
 		}
 	}
 
-	bool screen::update()
+	void screen::update()
 	{
 		if(data != NULL)
 			SDL_Flip(data);
+	}
 
+	bool screen::wait_quit_event()
+	{
 		SDL_Event event;
-		/* Check for events */
-		while(SDL_PollEvent(&event)) {
+		while(SDL_WaitEvent(&event)) {
 			switch(event.type) {
 				case SDL_QUIT:
-					return false;
+					return true;
 					break;
 			}
 		}
-		return true;
+		return false;
 	}
 
 }
