@@ -1,9 +1,9 @@
 #include "Ray.hpp"
 
-Ray::Ray(const Point& origin, const UnitVector& direction, const unsigned int propagations_left) :
+Ray::Ray(const Point& origin, const UnitVector& direction, unsigned int remaining_propagations) :
   direction(direction),
   origin(origin),
-  propagations_left(propagations_left) {
+  remaining_propagations(remaining_propagations) {
 }
 
 UnitVector Ray::get_direction() const {
@@ -14,6 +14,10 @@ Point Ray::get_origin() const {
   return origin;
 }
 
-unsigned int Ray::get_propagations_left() const {
-  return propagations_left;
+unsigned int Ray::get_remaining_propagations() const {
+  return remaining_propagations;
+}
+
+std::ostream& operator<<(std::ostream &output_stream, const Ray& ray) {
+  return output_stream << "Ray(" << ray.get_origin() << ", " << ray.get_direction() << ", " << ray.get_remaining_propagations() << ")";
 }
