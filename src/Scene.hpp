@@ -24,7 +24,7 @@ class Scene {
     const std::vector<Object*> get_objects() const;
 
     bool obstructs(const Point& beginning, const Point& end) const;
-    Light determine_light_from_sources_at(const Point& point) const;
+    Light determine_light_from_sources_at(const Point& point, const rt::vector normal_vector) const;
     const Option< std::pair<Object*, Point> > get_incidence_point_of(const Ray& ray) const;
     Light determine_light_of(const Ray& ray) const;
 };

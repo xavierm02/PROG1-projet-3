@@ -14,11 +14,11 @@ double g(unsigned char x) {
 }
 */
 char f(double x) {
-  return (unsigned char) (tanh(x)*255);
+  return (unsigned char) (tanh(x)*256);
 }
 
 double g(unsigned char x) {
-  return (atanh(x/255.0));
+  return (atanh(x/256.0));
 }
 
 Light::Light() :
@@ -44,11 +44,11 @@ Light operator*(const double& k, const Light& light) {
   }
   double green = light.green;
   if (green != 0 ) {
-    green = k * green / 255.0;
+    green = k * green;
   }
   double blue = light.blue;
   if (blue != 0 ) {
-    blue = k * blue / 255.0;
+    blue = k * blue;
   }
   return Light(red, green, blue);
 }

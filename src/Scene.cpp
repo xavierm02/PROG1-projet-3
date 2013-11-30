@@ -65,11 +65,11 @@ bool Scene::obstructs(const Point& beginning, const Point& end) const {
   return false;
 }
 
-Light Scene::determine_light_from_sources_at(const Point& point) const {
+Light Scene::determine_light_from_sources_at(const Point& point, const rt::vector normal_vector) const {
   Light light = Light();
   for (std::vector<Source>::const_iterator it = sources.begin(); it != sources.end(); ++it) {
     if (! this->obstructs(it->get_origin(), point)) {
-      light = light + it->get_light();
+      light = light + std::abs((it->get_origin() - point).unit() | normal_vector) * it->get_light();
     }
   }
   return light;
@@ -85,13 +85,12 @@ Light Scene::determine_light_of(const Ray& ray) const {
   Point point = pair.second;
   Texture texture = object->get_texture();
   unsigned int propagations_left = ray.get_propagations_left();
-  if (propagations_left == 0) {
-    return texture.get_color() ^ this->determine_light_from_sources_at(point);
-  }
+  //if (propagations_left == 0) {
+
+  //}
   //std::vector< std::pair<Ray,double> > rays;
 
   //Ray reflection_ray = object.get_reflected_vector(...);
   //rt::color reflection_color = this->determine_color(reflection_ray);
-
-  return texture.get_color() ^ this->determine_light_from_sources_at(point);
+  return (texture.get_color() ^ this->determine_light_from_sources_at(point, object->get_normal_vector_at(point)));
 }

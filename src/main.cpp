@@ -22,16 +22,26 @@ int main(void)
 
   //Rectangle rect = Rectangle(Point(100,2000,-2000), rt::vector(1,0,1), rt::vector(0,1,0), 800, 800, rt::color::BLUE);
 
-  scene.add_object(Plane(Point(0,0,-1000), rt::vector(0,0,1), rt::color::WHITE));
-  scene.add_object(Sphere(Point(100,0,0), 400, rt::color::BLACK));
-  scene.add_object(Sphere(Point(600,-1200,-200), 400, rt::color::BLACK));
-  scene.add_object(Sphere(Point(600,1200,-200), 400, rt::color::BLACK));
+  // demo 1
 
-  scene.add_source(Source(Point(1000,0,2000), Light::RED));
-  scene.add_source(Source(Point(0,1000,2000), Light::GREEN));
-  scene.add_source(Source(Point(-1000,0,2000), Light::BLUE));
-  scene.add_source(Source(Point(0,-1000,2000), Light::GREY));
-  scene.add_source(Source(Point(0, 0, 2000), Light::WHITE));
+  //scene.add_object(Plane(Point(0,0,-1000), rt::vector(0,0,1), rt::color::WHITE));
+  //scene.add_object(Sphere(Point(100,0,0), 400, rt::color::BLACK));
+  //scene.add_object(Sphere(Point(600,-1200,-200), 400, rt::color::BLACK));
+  //scene.add_object(Sphere(Point(600,1200,-200), 400, rt::color::BLACK));
+
+  //scene.add_source(Source(Point(1000,0,2000), Light::RED));
+  //scene.add_source(Source(Point(0,1000,2000), Light::GREEN));
+  //scene.add_source(Source(Point(-1000,0,2000), Light::BLUE));
+  //scene.add_source(Source(Point(0,-1000,2000), Light::GREY));
+  //scene.add_source(Source(Point(0, 0, 2000), Light::WHITE));
+
+  // demo 2
+
+  scene.add_object(Sphere(Point(100,0,0), 400, rt::color::RED));
+  scene.add_object(Sphere(Point(600,-1200,-200), 400, rt::color::GREEN));
+  scene.add_object(Sphere(Point(600,1200,-200), 400, rt::color::BLUE));
+
+  scene.add_source(Source(Point(-1000,0,2000), Light::WHITE));
 
   camera.render(scene);
   screen.update();
