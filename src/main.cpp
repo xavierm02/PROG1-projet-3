@@ -2,6 +2,6 @@
 #include "Light.hpp"
 
 int main(void) {
-  std::cout << Light::GREY << std::endl;
+  std::cout << Light::WHITE + Light::WHITE << std::endl;
   return 0;
 }

@@ -6,7 +6,7 @@
 #include <iomanip>
 
 double Light::light_component_of_color_component(unsigned char color_component) {
-  return (atanh(color_component/256.0));
+  return (atanh(color_component/256.0));// 256 instead of 255 to avoid infinity
 }
 
 unsigned char Light::color_component_of_light_component(double light_component) {
@@ -24,7 +24,10 @@ Light::Light(double red, double green, double blue):
   green(green),
   blue(blue) {
   if (red < 0 || green < 0 || blue < 0) {
-    throw (std::logic_error("Trying to create a Light with negative components."));
+    throw (std::logic_error("Trying to create a Light with negative component."));
+  }
+  if (red == std::numeric_limits<double>::infinity() || green == std::numeric_limits<double>::infinity() || blue == std::numeric_limits<double>::infinity()) {
+    throw (std::logic_error("Trying to create a Light with infinite component."));
   }
 }
 
@@ -51,19 +54,11 @@ Light Light::operator+(const Light& light) const {
 }
 
 Light Light::reflect_on(const rt::color& color) const {
-  double red = color.get_red();
-  if (red != 0 ) {
-    red = red / 255.0 * red;
-  }
-  double green = color.get_green();
-  if (green != 0 ) {
-    green = green / 255.0 * green;
-  }
-  double blue = color.get_blue();
-  if (blue != 0 ) {
-    blue = blue / 255.0 * blue;
-  }
-  return Light(red, green, blue);
+  return Light(
+    color.get_red() / 255.0 * red,
+    color.get_green() / 255.0 * green,
+    color.get_blue() / 255.0 * blue
+  );
 }
 
 rt::color Light::to_color() const {
@@ -82,19 +77,11 @@ Light::operator int() const {
 }
 
 Light operator*(const double& scalar, const Light& light) {
-  double red = light.red;
-  if (red != 0 ) {
-    red = scalar * red;
-  }
-  double green = light.green;
-  if (green != 0 ) {
-    green = scalar * green;
-  }
-  double blue = light.blue;
-  if (blue != 0 ) {
-    blue = scalar * blue;
-  }
-  return Light(red, green, blue);
+  return Light(
+    scalar * light.red,
+    scalar * light.green,
+    scalar * light.blue
+  );
 }
 
 Light Light::WHITE = Light(rt::color::WHITE);
