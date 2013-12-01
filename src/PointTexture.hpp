@@ -10,6 +10,13 @@ class PointTexture {
     PointTexture(const rt::color& color);
 
     rt::color get_color() const;
+
+    static PointTexture WHITE;
+    static PointTexture BLACK;
+    static PointTexture RED;
+    static PointTexture GREEN;
+    static PointTexture BLUE;
+    static PointTexture GREY;
 };
 
 #endif

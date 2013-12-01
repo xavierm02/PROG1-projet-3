@@ -11,6 +11,13 @@ class UniformObjectTexture: public ObjectTexture {
     UniformObjectTexture* clone() const;
     PointTexture get_point_texture() const;
     PointTexture get_point_texture_at(const Point& /*point*/) const;
+
+    static UniformObjectTexture WHITE;
+    static UniformObjectTexture BLACK;
+    static UniformObjectTexture RED;
+    static UniformObjectTexture GREEN;
+    static UniformObjectTexture BLUE;
+    static UniformObjectTexture GREY;
 };
 
 #endif
