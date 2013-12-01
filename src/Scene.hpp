@@ -2,13 +2,14 @@
 #define __SCENE_H
 
 #include "Light.hpp"
-#include "Vector.hpp"
+#include "UnitVector.hpp"
 #include "Object.hpp"
 #include "Source.hpp"
 #include <iostream>
 #include <vector>
 #include <memory>
-/*
+#include "ObjectPoint.hpp"
+
 class Scene {
   private:
     Light background;
@@ -19,15 +20,15 @@ class Scene {
     Scene(const Light& background = Light::BLACK);
 
     void add_source(const Source& source);
-    void add_object(const Object& object);
+    void add_object(std::shared_ptr<Object> object);
 
     const std::vector<Source> get_sources() const;
     const std::vector<std::shared_ptr<Object>> get_objects() const;
 
     bool obstructs(const Point& beginning, const Point& end) const;
-    Light determine_light_from_sources_at(const Point& point, const rt::vector normal_vector) const;
-    const Option< std::pair<Object*, Point> > get_incidence_point_of(const Ray& ray) const;
+    Light determine_light_from_sources_at(const Point& point, const UnitVector normal_vector) const;
+    const Option<ObjectPoint> get_incidence_point_of(const Ray& ray) const;
     Light determine_light_of(const Ray& ray) const;
 };
-*/
+
 #endif
