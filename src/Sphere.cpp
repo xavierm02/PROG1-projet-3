@@ -4,7 +4,7 @@
 #include "Sphere.hpp"
 
 Sphere::Sphere(const Point& center, double radius, const ObjectTexture& texture) :
-  center(center), radius(radius) {
+  center(Point(center)), radius(radius) {
   this->texture = texture.wrap();
 }
 

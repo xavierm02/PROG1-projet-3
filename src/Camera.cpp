@@ -4,7 +4,12 @@
 #include "Camera.hpp"
 
 Camera::Camera(const rt::image& image, const Point& origin, const UnitVector& direction, const UnitVector& up, double distance, const unsigned int depth) :
-  depth(depth), direction(direction), distance(distance), image(image), origin(origin), up(up) {
+  depth(depth),
+  direction(UnitVector(direction)),
+  distance(distance),
+  image(image),
+  origin(Point(origin)),
+  up(UnitVector(up)) {
 }
 
 void Camera::render(const Scene& scene) {

@@ -21,6 +21,7 @@ class Scene {
 
     void add_source(const Source& source);
     void add_object(std::shared_ptr<Object> object);
+    void add_object(const Object& object);
 
     const std::vector<Source> get_sources() const;
     const std::vector<std::shared_ptr<Object>> get_objects() const;

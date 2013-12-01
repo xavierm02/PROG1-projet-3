@@ -9,14 +9,15 @@
 #include "Light.hpp"
 #include <limits>
 #include <cmath>
+#include "UniformObjectTexture.hpp"
 
 int main(void)
-{/*
-  rt::screen screen = rt::screen(1000,1000);//640,480
+{
+  //rt::screen screen = rt::screen(1000,1000);//640,480
 
-  Camera camera = Camera(screen, Point(-1000,0,0), UnitVector(1,0,0), UnitVector(0,0,1), 100.0, 2);
+  //Camera camera = Camera(screen, Point(-1000,0,0), UnitVector(1,0,0), UnitVector(0,0,1), 100.0, 2);
 
-  Scene scene = Scene(rt::color(127, 127, 127));
+  //Scene scene = Scene(Light::GREY);
 
   // demo 1
 
@@ -33,14 +34,14 @@ int main(void)
 
   // demo 2
 
-  scene.add_object(Sphere(Point(100,0,0), 400, rt::color::RED));
-  scene.add_object(Sphere(Point(600,-1200,-200), 400, rt::color::GREEN));
-  scene.add_object(Sphere(Point(600,1200,-200), 400, rt::color::BLUE));
+  //scene.add_object(Sphere(Point(100,0,0), 400, UniformObjectTexture::RED));
+  //scene.add_object(Sphere(Point(600,-1200,-200), 400, UniformObjectTexture::GREEN));
+  //scene.add_object(Sphere(Point(600,1200,-200), 400, UniformObjectTexture::BLUE));
 
-  scene.add_source(Source(Point(-1000,0,2000), Light::WHITE));
+  //scene.add_source(Source(Point(-1000,0,2000), Light::WHITE));
 
-  camera.render(scene);
-  screen.update();
-  screen.wait_quit_event();*/
+  //camera.render(scene);
+  //screen.update();
+  //screen.wait_quit_event();
   return 0;
 }

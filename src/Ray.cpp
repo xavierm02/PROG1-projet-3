@@ -1,8 +1,8 @@
 #include "Ray.hpp"
 
 Ray::Ray(const Point& origin, const UnitVector& direction, unsigned int remaining_propagations):
-  direction(direction),
-  origin(origin),
+  direction(UnitVector(direction)),
+  origin(Point(origin)),
   remaining_propagations(remaining_propagations) {
 }
 

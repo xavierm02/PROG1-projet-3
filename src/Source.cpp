@@ -3,8 +3,8 @@
 #include "Source.hpp"
 
 Source::Source(const Point& origin, const Light& light):
-  light(light),
-  origin(origin) {
+  light(Light(light)),
+  origin(Point(origin)) {
 }
 
 Light Source::get_light() const {

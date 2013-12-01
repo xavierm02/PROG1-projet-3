@@ -4,8 +4,9 @@
 #include "Parameters.hpp"
 #include <cmath>
 
-Plane::Plane(const Point& origin, const UnitVector& normal_vector, const ObjectTexture& texture) :
-  normal_vector(normal_vector), origin(origin) {
+Plane::Plane(const Point& origin, const UnitVector& normal_vector, const ObjectTexture& texture):
+  normal_vector(UnitVector(normal_vector)),
+  origin(Point(origin)) {
   this->texture = texture.wrap();
 }
 

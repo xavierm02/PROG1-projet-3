@@ -6,15 +6,19 @@
 #include "Parameters.hpp"
 
 Scene::Scene(const Light& background) :
-  background(background) {
+  background(Light(background)) {
 }
 
 void Scene::add_source(const Source& source) {
-  sources.push_back(source);
+  sources.push_back(Source(source));
 }
 
 void Scene::add_object(std::shared_ptr<Object> object) {
   objects.push_back(object);
+}
+
+void Scene::add_object(const Object& object) {
+  add_object(object.wrap());
 }
 
 const std::vector<Source> Scene::get_sources() const {
