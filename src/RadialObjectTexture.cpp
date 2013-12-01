@@ -27,7 +27,6 @@ double RadialObjectTexture::get_scalar() const {
 
 PointTexture RadialObjectTexture::get_point_texture_at(const Point& point) const {
   double t = fmod(offset + (point - origin).norm() * scalar, 3.0);
-  return rt::color(std::min(255, (int) t*255),std::min(255, (int) t*255),std::min(255, (int) t*255));// TODO find reason for strange shapes (camera?)
   if (t <= 1) {
     return rt::color((1-t)*255, t*255, 0);
   }
