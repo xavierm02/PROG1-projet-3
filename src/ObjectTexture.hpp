@@ -3,10 +3,12 @@
 
 #include "Point.hpp"
 #include "PointTexture.hpp"
+#include <memory>
 
 class ObjectTexture {
   public:
-    virtual PointTexture get_texture_at(const Point& point) const = 0;
+    virtual std::shared_ptr<ObjectTexture> clone() const = 0;
+    virtual PointTexture get_point_texture_at(const Point& point) const = 0;
 };
 
 #endif

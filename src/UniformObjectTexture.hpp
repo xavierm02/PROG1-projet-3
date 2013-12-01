@@ -3,11 +3,12 @@
 
 #include "ObjectTexture.hpp"
 
-class UniformObjectTexture {
+class UniformObjectTexture: public ObjectTexture {
   private:
     PointTexture point_texture;
   public:
     UniformObjectTexture(const PointTexture& point_texture);
+    std::shared_ptr<ObjectTexture> clone() const;
     PointTexture get_point_texture() const;
     PointTexture get_point_texture_at(const Point& /*point*/) const;
 };

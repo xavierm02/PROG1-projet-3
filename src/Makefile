@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-W -Wall -ansi -pedantic `sdl-config --cflags --libs`
+CFLAGS=-W -Wall -std=c++0x `sdl-config --cflags --libs`
 LDFLAGS=
 
 INCLUDE=`sdl-config --cflags` -I. -I./include

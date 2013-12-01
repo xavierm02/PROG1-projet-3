@@ -1,3 +1,6 @@
+#ifndef __POINT_H
+#define __POINT_H
+
 #include "Vector.hpp"
 
 class Point {
@@ -22,3 +25,5 @@ class Point {
 };
 
 std::ostream& operator<<(std::ostream &output_stream, const Point& vector);
+
+#endif
