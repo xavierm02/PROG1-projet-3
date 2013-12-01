@@ -7,12 +7,13 @@
 \contentsline {subsection}{\numberline {2.2}Les diff\IeC {\'e}rentes classes utilis\IeC {\'e}es}{2}
 \contentsline {subsubsection}{\numberline {2.2.1}D\IeC {\'e}pendances des classes}{2}
 \contentsline {subsubsection}{\numberline {2.2.2}La classe \emph {Light}}{3}
-\contentsline {subsubsection}{\numberline {2.2.3}La classe \emph {Texture}}{3}
-\contentsline {subsubsection}{\numberline {2.2.4}Les classes auxiliaires}{3}
+\contentsline {subsubsection}{\numberline {2.2.3}Ls classes \emph {ObjectTexture} et \emph {PointTexture}}{4}
+\contentsline {subsubsection}{\numberline {2.2.4}Les classes auxiliaires}{4}
 \contentsline {section}{\numberline {3}Comment renvoyer la couleur d'un pixel ?}{4}
 \contentsline {subsection}{\numberline {3.1}Premi\IeC {\`e}re \IeC {\'e}tape : Trouver le premier objet de la sc\IeC {\`e}ne inters\IeC {\'e}ct\IeC {\'e} par le rayon}{4}
 \contentsline {subsection}{\numberline {3.2}Deuxi\IeC {\`e}me \IeC {\'e}tape : Calcul de la couleur}{4}
-\contentsline {section}{\numberline {4}Ameliorations}{4}
-\contentsline {subsection}{\numberline {4.1}Am\IeC {\'e}liorations visant \IeC {\`a} rendre l'image plus r\IeC {\'e}aliste}{4}
+\contentsline {section}{\numberline {4}Ameliorations}{5}
+\contentsline {subsection}{\numberline {4.1}Am\IeC {\'e}liorations visant \IeC {\`a} rendre l'image plus r\IeC {\'e}aliste}{5}
 \contentsline {subsection}{\numberline {4.2}Avancer vers un moteur plus fonctionnel\dots }{5}
 \contentsline {section}{\numberline {5}Conclusion}{5}
+\contentsline {section}{\numberline {6}Annexes - Rendu}{6}

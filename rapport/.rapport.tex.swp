@@ -68,6 +68,7 @@ Nous avons codé une fonction permettant de transformer une lumière en une coul
 Ces classes permettent de distinguer d'un point de vue logique des objets ayant la m\^eme repr\'esentation physique. Il n'est par exemple pas logique d'additionner deux points. Nous définissons donc des fonctions définissant les opérations entre la classe \emph{Point} et la classe \emph{vector}.
 
 		\item[La classe \emph{Option} : ]
+			Lorsque nous cherchons le premier objet qu'un rayon va rencontrer, on demande \`a chaque objet si le rayon va l'atteindre et si oui, quelle distance le rayon doit parcourir. Le type option permet de demander directement la distance et tout en laissant le choix \`a l'objet de r\'epondre que le rayon ne l'atteindra jamais.
 	\end{description}
   
 \section{Comment renvoyer la couleur d'un pixel ?}
@@ -77,24 +78,25 @@ Afin de générer l'image finale, la caméra envoie pour chaque pixel un rayon (
 Afin de touver le premier objet de la scène intersecté par le rayon, nous calculons pour chaque objet si le rayon l'intersecte puis parmi tous les objets intersectés nous prenons l'objet le plus proche de la caméra. Dans un deuxième temps nous renvoyons le point $P$ (classe \emph{Point}) d'intersection entre le rayon et l'objet.
 
 \subsection{Deuxième étape : Calcul de la couleur}
-A présent, il faut savoir si le point $P$ est éclairé par les sources lumineuses. Pour cela pour chaque source $S$ de la scène, nous regardons si le rayon reliant $P$ à $S$ intersecte au moins un objet de la scène autre que l'objet courant. si l'objet est une sphère nous verifions également si le cosinus entre la normale au point $P$ et le vecteur $\overrightarrow{PS}$ est positif (le contraire indiquerait que la source se situe de l'autre coté de la sphère).
+A présent, il faut savoir si le point $P$ est éclairé par les sources lumineuses. Pour cela pour chaque source $S$ de la scène, nous regardons si le rayon reliant $P$ à $S$ intersecte au moins un objet de la scène autre que l'objet courant.
 Pour chaque composante ($r$ par exemple) nous calculons la lumière résultante par la formule : 
 \begin{equation}
 	r_{final} = \sum_{s \in \{ \text{sources éclairant} P \}} r_s*\lambda(s)*\frac{r_{objet}}{255}
 \end{equation}
 où $\lambda(s)$ est le cosinus entre la normale à l'objet en $P$ et le vecteur $\overrightarrow{PS}$. 
-On obtient ainsi une lumière que l'on transforme en couleur grâce à la fonction $\tanh$
+On obtient ainsi une lumière que l'on transforme en couleur.
 
-Remarque : Cette première version de moteur de lancer de rayon ne tient compte que de l'aspect mâte des objets, on ne considère pas la réflection ni la transparence des objets.
+Remarque : Cette première version de moteur de lancer de rayon ne tient compte que de l'aspect mâte des objets, on ne considère ni la réflection ni la transparence des objets.
 
 \section{Ameliorations}
 
 A partir du moteur de lancer de rayons que nous avons codé, nous pouvons penser à diverses améliorations.
 \subsection{Améliorations visant à rendre l'image plus réaliste}
 	\begin{itemize}
-		\item Enrichir la classe \emph{Object} avec d'autres objets comme des objets définis par des équations cartésiennes par expemple.
-		\item Rendre la classe Texture un peu plus exhaustive en prenant en compte la transparance, un coefficient de reflexivité, un indice de réfraction\dots
-		\item Imaginer des objets ayant une texture non uniforme.
+		\item Ajouter des classes filles de la classe \emph{Object}. Par exemple des cubes ou des surfaces planes.
+		\item Rendre la classe Texture un peu plus exhaustive en prenant en compte la transparance, un indice de réfraction\dots
+		\item Faire en sorte que \emph{RadialObjectTexture} prenne un vecteur de couleurs plut\^ot que d'imposer le cycle rouve-vert-bleu.
+		\item Permettre le texture mapping.
 		\item Chercher à représenter des objets ayant une certaine épaisseur.
 		\item Intégrer des phénomènes physiques tels que la diffraction, la réfraction\dots
 	\end{itemize}
@@ -110,13 +112,24 @@ A partir du moteur de lancer de rayons que nous avons codé, nous pouvons penser
 Lors de ce projet sur la technique du lancer de rayons, nous avons compris à quel point les classes peuvent s'avérer être des outils puissants lors de l'implémentation de problèmes de ce type. En effet, la multiplicité des éléments d'un moteur de lancer de rayon (scène, rayon, lumières, couleurs, objets, caméra, texture, etc) et leur forte intriquation mutuelle conduit à penser les programmes à travers les différentes dépendances des éléments entre eux et donc d'utiliser des classes. Ce projet à conduit à générer des images relativement réalistes, d'une scène contenant des sphères et des plans.
 
 \section{Annexes - Rendu}
-\begin{center}
-\includegraphics[scale=0.3]{demo-1-1.png}
 
-\includegraphics[scale=0.3]{demo-1-2.png}
+\begin{figure}[h!]
+  \caption{Trois sph\`eres (bleue, rouge et verte) \'eclair\'ees par une unique lumi\`ere blanche}
+  \centering
+    \includegraphics[scale=0.3]{demo-2.png}
+\end{figure}
 
-\includegraphics[scale=0.3]{demo-2.png}
-	\end{center}
+\begin{figure}[h!]
+  \caption{Trois sph\`eres noires et un plan blanc \'eclair\'ees par cinq sources diff\'erentes}
+  \centering
+    \includegraphics[scale=0.25]{demo-1-1.png}
+\end{figure}
+
+\begin{figure}[h!]
+  \caption{Trois sph\`eres noires et un plan de couleur radiale \'eclair\'ees par cinq sources diff\'erentes}
+  \centering
+    \includegraphics[scale=0.25]{demo-1-2.png}
+\end{figure}
 
 
 \end{document}
