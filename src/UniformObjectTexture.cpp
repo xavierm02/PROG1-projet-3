@@ -16,9 +16,9 @@ PointTexture UniformObjectTexture::get_point_texture_at(const Point& /*point*/) 
   return point_texture;
 }
 
-/*UniformObjectTexture UniformObjectTexture::WHITE = UniformObjectTexture(PointTexture::WHITE);
+UniformObjectTexture UniformObjectTexture::WHITE = UniformObjectTexture(PointTexture::WHITE);
 UniformObjectTexture UniformObjectTexture::BLACK = UniformObjectTexture(PointTexture::BLACK);
 UniformObjectTexture UniformObjectTexture::RED = UniformObjectTexture(PointTexture::RED);
 UniformObjectTexture UniformObjectTexture::GREEN = UniformObjectTexture(PointTexture::GREEN);
 UniformObjectTexture UniformObjectTexture::BLUE = UniformObjectTexture(PointTexture::BLUE);
-UniformObjectTexture UniformObjectTexture::GREY = UniformObjectTexture(PointTexture::GREY);*/
+UniformObjectTexture UniformObjectTexture::GREY = UniformObjectTexture(PointTexture::GREY);
