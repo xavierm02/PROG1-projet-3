@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Option.hpp"
+#include "Light.hpp"
 
 int main(void) {
-  std::cout << Option<double>(123) << std::endl;
+  std::cout << Light::GREY << std::endl;
   return 0;
 }

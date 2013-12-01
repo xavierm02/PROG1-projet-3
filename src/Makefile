@@ -6,8 +6,8 @@ INCLUDE=`sdl-config --cflags` -I. -I./include
 LIBS=`sdl-config --libs`
 
 EXEC=./main.bin
-HEADERS= $(wildcard *.hpp)
-SRC= $(wildcard *.cpp)
+HEADERS= $(shell find . -type f -name '*.hpp')
+SRC= $(shell find . -type f -name '*.cpp')
 OBJ= $(SRC:.cpp=.o)
 
 all: $(EXEC)

@@ -1,6 +1,6 @@
 #include "Ray.hpp"
 
-Ray::Ray(const Point& origin, const UnitVector& direction, unsigned int remaining_propagations) :
+Ray::Ray(const Point& origin, const UnitVector& direction, unsigned int remaining_propagations):
   direction(direction),
   origin(origin),
   remaining_propagations(remaining_propagations) {
