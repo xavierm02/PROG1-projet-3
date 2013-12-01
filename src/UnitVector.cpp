@@ -7,6 +7,9 @@ UnitVector::UnitVector(const Vector& vector) {
   this->z = vector.get_z() / norm;
 }
 
+UnitVector::UnitVector(const UnitVector& vector) : Vector(vector) {
+}
+
 UnitVector::UnitVector(double x, double y, double z) {
   Vector vector = Vector(x, y, z);
   double norm = vector.norm();
