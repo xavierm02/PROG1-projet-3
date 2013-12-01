@@ -9,6 +9,7 @@ class UnitVector : public Vector {
     UnitVector(double x, double y, double z);
 
   UnitVector operator-() const;
+  Vector operator-(const UnitVector& other) const;
 };
 
 #endif

@@ -18,3 +18,11 @@ UnitVector::UnitVector(double x, double y, double z) {
 UnitVector UnitVector::operator-() const {
   return UnitVector(-x, -y, -z);
 }
+
+Vector UnitVector::operator-(const UnitVector& other) const {
+  return Vector(
+    x - other.x,
+    y - other.y,
+    z - other.z
+  );
+}

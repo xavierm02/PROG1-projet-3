@@ -1,7 +1,7 @@
 #ifndef __OBJECT_H
 #define __OBJECT_H
 
-#include "Vector.hpp"
+#include "UnitVector.hpp"
 #include "ObjectTexture.hpp"
 #include "Ray.hpp"
 #include "Option.hpp"
@@ -19,7 +19,7 @@ public:
 
   virtual Option<double> get_distance_of_incidence_point_of(const Ray& ray) = 0;
 
-  virtual Vector get_normal_vector_at(const Point& point) const = 0;
+  virtual UnitVector get_normal_vector_at(const Point& point) const = 0;
 
   Ray get_reflected_ray(const Ray& ray, const Point& point) const;
 

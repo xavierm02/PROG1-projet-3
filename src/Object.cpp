@@ -5,8 +5,8 @@ std::shared_ptr<ObjectTexture> Object::get_texture() const {
 }
 
 Ray Object::get_reflected_ray(const Ray& ray, const Point& point) const {
-  Vector normal = this->get_normal_vector_at(point);
-  Vector direction = ray.get_direction();
+  UnitVector normal = this->get_normal_vector_at(point);
+  UnitVector direction = ray.get_direction();
   Vector normal_component = (direction|normal) * normal;
   Vector radial_component = direction - normal_component;
   return Ray(point, radial_component - normal_component, ray.get_remaining_propagations() - 1);
