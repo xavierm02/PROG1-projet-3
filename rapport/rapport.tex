@@ -5,13 +5,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{listings}
+\usepackage{amsmath}
+\pagestyle{headings}
 
 \title{Rapport du projet C++ : Lancer de rayons}
 \author{Mathieu \textsc{Mari} \and Xavier \textsc{Montillet}}
 
 \begin{document}
 
-\title
+\maketitle
 \tableofcontents
 	
 
@@ -22,7 +24,7 @@ Cette technique permet de générer des images 3D à partir de la déscription d
 \section{Implémentation en C++}
 	\subsection{Principe général}
 	\paragraph{}		
-Afin de générer l'image 3D d'une scène, il faut deja définir quels sont les objets qui composent la scène, c'est dire définir quel est leur type (sphère, plan, \dots), quelle est leur position, leur couleur, leur texture\dots. Ensuite, il faut choisir la posistion des sources lumineuses puis leur couleur, leur intensité\dots Enfin, il faut positionner la caméra qui observe la scène. Pour cela, on choisit un point qui sera la position de l'objectif, puis la position de l'ecran sur lequel l'image sera projetée.
+Afin de générer l'image 3D d'une scène, il faut deja définir quels sont les objets qui composent la scène, c'est dire définir quel est leur type (sphère, plan, \dots), quelle est leur position, leur couleur, leur texture\dots. Ensuite, il faut choisir la posistion des sources lumineuses puis leur couleur, leur intensité\dots Enfin, il faut positionner la caméra qui observe la scène. Pour cela, on choisit un point qui sera la position de l'objectif, puis la position de l'écran sur lequel l'image sera projetée.
 
 	\paragraph{}
 		Fabriquer une image, c'est calculer pour chaque pixel sa couleur. Dans cette optique, le principe de la technique du lancer de rayons consiste à créer une demi-droite ayant pour origine l'objectif de la caméra et passant par le un pixel de l'écran. On regarde quel objet de la scène est intersecté en premier par la demi-droite. On calcule ensuite la couleur du pixel en regardant combien de sources éclairent le point d'intersection entre la demi-droite et l'objet, quel est la couleur de l'objet et des sources, est-ce qu'il y a reflection, refraction, transparence\dots
@@ -63,7 +65,7 @@ Nous avons codé une fonction permettant de transformer une lumière en une coul
 \subsubsection{Les classes auxiliaires}
 	\begin{description}
 		\item[La classe \emph{Point} : ]
-Cette classe permet de distinguer un vecteur d'un point. Même si on peut représenter un point par un vecteur, il n'est pas très correct d'additionner deux points par exemple. Nous définissons donc des fonctions definissant les opérations entre la classe \emph{Point} et la classe \emph{vector}.
+Cette classe permet de distinguer un vecteur d'un point. Même si on peut représenter un point par un vecteur, il n'est pas très correct d'additionner deux points par exemple. Nous définissons donc des fonctions définissant les opérations entre la classe \emph{Point} et la classe \emph{vector}.
 
 		\item[La classe \emph{Option} : ]
 	\end{description}
@@ -75,20 +77,20 @@ Afin de générer l'image finale, la caméra envoie pour chaque pixel un rayon (
 Afin de touver le premier objet de la scène intersecté par le rayon, nous calculons pour chaque objet si le rayon l'intersecte puis parmi tous les objets intersectés nous prenons l'objet le plus proche de la caméra. Dans un deuxième temps nous renvoyons le point $P$ (classe \emph{Point}) d'intersection entre le rayon et l'objet.
 
 \subsection{Deuxième étape : Calcul de la couleur}
-A présent, il faut savoir si le point $P$ est éclairé par les sources lumineuses. Pour cela pour chaque source $S$ de la scene, nous regardons si le rayon reliant $P$ à $S$ intersecte au moins un objet de la scène autre que l'objet courant. si l'objet est une sphère nous verifions également si le cosinus entre la normale au point $P$ et le vecteur $PS$ est positif (le contraire indiquerait que la source se situe de l'autre coté de la sphère).
+A présent, il faut savoir si le point $P$ est éclairé par les sources lumineuses. Pour cela pour chaque source $S$ de la scène, nous regardons si le rayon reliant $P$ à $S$ intersecte au moins un objet de la scène autre que l'objet courant. si l'objet est une sphère nous verifions également si le cosinus entre la normale au point $P$ et le vecteur $\overrightarrow{PS}$ est positif (le contraire indiquerait que la source se situe de l'autre coté de la sphère).
 Pour chaque composante ($r$ par exemple) nous calculons la lumière résultante par la formule : 
 \begin{equation}
-	$r_{final} = \sum_{s \in \{ \text{sources éclairant} P \}} r_s*\lambda(s)*\frac{r_{objet}}{255}$
+	r_{final} = \sum_{s \in \{ \text{sources éclairant} P \}} r_s*\lambda(s)*\frac{r_{objet}}{255}
 \end{equation}
-où $\lambda(s)$ est le cosinus entre la normale à l'objet en $P$ et le vecteur $PS$. 
-On obtient ainsi une lumière que l'on transforme en couleur grâce à la fonction $\th$
+où $\lambda(s)$ est le cosinus entre la normale à l'objet en $P$ et le vecteur $\overrightarrow{PS}$. 
+On obtient ainsi une lumière que l'on transforme en couleur grâce à la fonction $\tanh$
 
-Remarque : Cette première version de moteur de lancer de rayon ne tient compte que de l'aspect mâte des objets, on ne considère pas la reflection ni la transparence des objets.
+Remarque : Cette première version de moteur de lancer de rayon ne tient compte que de l'aspect mâte des objets, on ne considère pas la réflection ni la transparence des objets.
 
 \section{Ameliorations}
 
 A partir du moteur de lancer de rayons que nous avons codé, nous pouvons penser à diverses améliorations.
-\subsection{Amélioration visant à rendre l'image plus réaliste}
+\subsection{Améliorations visant à rendre l'image plus réaliste}
 	\begin{itemize}
 		\item Enrichir la classe \emph{Object} avec d'autres objets comme des objets définis par des équations cartésiennes par expemple.
 		\item Rendre la classe Texture un peu plus exhaustive en prenant en compte la transparance, un coefficient de reflexivité, un indice de réfraction\dots
@@ -105,7 +107,7 @@ A partir du moteur de lancer de rayons que nous avons codé, nous pouvons penser
 	\end{itemize}
 
 \section{Conclusion}
-Lors de ce projet sur la technique du lancer de rayons, nous avons compris à quelle point les classes peuvent s'avérer être des outils puissant lors de l'implémentation de problèmes de ce type. En effet, la multiplicité des éléments d'un moteur de lancer de rayon (scène, rayon, lumières, couleurs, objets, caméra, texture, etc) et leur forte intriquation mutuelle conduit à penser les programmes à travers les différentes dépendances des éléments entre eux et donc d'utiliser des classes. Ce projet à conduit à générer des images relativement réalistes, d'une scène contenant des sphères et des plans.
+Lors de ce projet sur la technique du lancer de rayons, nous avons compris à quel point les classes peuvent s'avérer être des outils puissants lors de l'implémentation de problèmes de ce type. En effet, la multiplicité des éléments d'un moteur de lancer de rayon (scène, rayon, lumières, couleurs, objets, caméra, texture, etc) et leur forte intriquation mutuelle conduit à penser les programmes à travers les différentes dépendances des éléments entre eux et donc d'utiliser des classes. Ce projet à conduit à générer des images relativement réalistes, d'une scène contenant des sphères et des plans.
 	
 
 
