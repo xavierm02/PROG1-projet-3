@@ -85,16 +85,24 @@ On obtient ainsi une lumière que l'on transforme en couleur grâce à la foncti
 
 Remarque : Cette première version de moteur de lancer de rayon ne tient compte que de l'aspect mâte des objets, on ne considère pas la reflection ni la transparence des objets.
 
-\section{Ameriolations}
+\section{Ameliorations}
 
 A partir du moteur de lancer de rayons que nous avons codé, nous pouvons penser à diverses améliorations.
 \subsection{Amélioration visant à rendre l'image plus réaliste}
 	\begin{itemize}
-		\item Rendre la classe Texture un peu plus exhaustive en prenant en compte la transparance, un coefficient de reflexivité\dots
+		\item Enrichir la classe \emph{Object} avec d'autres objets comme des objets définis par des équations cartésiennes par expemple.
+		\item Rendre la classe Texture un peu plus exhaustive en prenant en compte la transparance, un coefficient de reflexivité, un indice de réfraction\dots
 		\item Imaginer des objets ayant une texture non uniforme.
+		\item Chercher à représenter des objets ayant une certaine épaisseur.
+		\item Intégrer des phénomènes physiques tels que la diffraction, la réfraction\dots
 	\end{itemize}
 
-
+\subsection{Avancer vers un moteur plus fonctionnel\dots}
+	\begin{itemize}
+		\item Uiliser deux caméras, générer deux images que l'on filtre l'un avec du rouge et l'autre avec du bleu par exemple, et observer grâce à des lunettes, une image en trois dimensions.
+		\item Rajouter une dépendance temporelle des objets et regarder la scène évoluer.
+		\item Déplacer la caméra dans la scène et visualiser de façon "fluide" les transformations, dans le but de faire des vidéos de synthèse par exemple.
+	\end{itemize}
 
 \section{Conclusion}
 Lors de ce projet sur la technique du lancer de rayons, nous avons compris à quelle point les classes peuvent s'avérer être des outils puissant lors de l'implémentation de problèmes de ce type. En effet, la multiplicité des éléments d'un moteur de lancer de rayon (scène, rayon, lumières, couleurs, objets, caméra, texture, etc) et leur forte intriquation mutuelle conduit à penser les programmes à travers les différentes dépendances des éléments entre eux et donc d'utiliser des classes. Ce projet à conduit à générer des images relativement réalistes, d'une scène contenant des sphères et des plans.
