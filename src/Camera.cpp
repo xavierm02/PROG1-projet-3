@@ -5,11 +5,11 @@
 
 Camera::Camera(const rt::image& image, const Point& origin, const UnitVector& direction, const UnitVector& up, double distance, const unsigned int depth) :
   depth(depth),
-  direction(UnitVector(direction)),
+  direction(direction),
   distance(distance),
   image(image),
-  origin(Point(origin)),
-  up(UnitVector(up)) {
+  origin(origin),
+  up(up) {
 }
 
 void Camera::render(const Scene& scene) {

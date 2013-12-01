@@ -11,6 +11,8 @@
 class Object {
 protected:
   std::shared_ptr<ObjectTexture> texture;
+  Object(std::shared_ptr<ObjectTexture> texture);
+  Object(const ObjectTexture& texture);
 
 public:
   virtual Object* clone() const = 0;

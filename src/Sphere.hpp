@@ -13,6 +13,7 @@ private:
   double radius;
 
 public:
+  Sphere(const Point& center, double radius, std::shared_ptr<ObjectTexture> texture);
   Sphere(const Point& center, double radius, const ObjectTexture& texture);
   Sphere* clone() const;
 
