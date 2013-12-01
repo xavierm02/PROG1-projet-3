@@ -10,6 +10,7 @@
 #include <limits>
 #include <cmath>
 #include "UniformObjectTexture.hpp"
+#include "RadialObjectTexture.hpp"
 
 int main(void)
 {
@@ -21,7 +22,7 @@ int main(void)
 
   // demo 1
 
-  scene.add_object(Plane(Point(0,0,-1000), UnitVector(0,0,1), UniformObjectTexture::WHITE));
+  scene.add_object(Plane(Point(0,0,-1000), UnitVector(0,0,1), RadialObjectTexture(Point(0,0,-1000), 0.001, 0)));
   scene.add_object(Sphere(Point(100,0,0), 400, UniformObjectTexture::BLACK));
   scene.add_object(Sphere(Point(600,-1200,-200), 400, UniformObjectTexture::BLACK));
   scene.add_object(Sphere(Point(600,1200,-200), 400, UniformObjectTexture::BLACK));
