@@ -32,9 +32,9 @@ class Vector {
 
     double norm() const;
 
-    friend Vector operator*(const double& scalar, const Vector& vector);
+    friend Vector operator*(double scalar, const Vector& vector);
 
-    friend Vector operator/(const Vector& vector, const double& scalar);
+    friend Vector operator/(const Vector& vector, double scalar);
 };
 
 std::ostream& operator<<(std::ostream &output_stream, const Vector& vector);
