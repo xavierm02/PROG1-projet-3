@@ -1,12 +1,10 @@
 #include <iostream>
-#include "vector.hpp"
-#include "color.hpp"
+
 #include "Source.hpp"
 
-
-
-Source::Source(const Point& origin, const Light& light) :
-  light(light), origin(origin) {
+Source::Source(const Point& origin, const Light& light):
+  light(Light(light)),
+  origin(Point(origin)) {
 }
 
 Light Source::get_light() const {
@@ -18,5 +16,5 @@ Point Source::get_origin() const {
 }
 
 Ray Source::send_ray_towards(const Point& point) const {
-  return Ray(origin, point-origin, 0);
+  return Ray(origin, UnitVector(point-origin), 0);
 }

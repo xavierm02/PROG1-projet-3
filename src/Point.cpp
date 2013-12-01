@@ -1,36 +1,53 @@
 #include "Point.hpp"
-#include "Utils.hpp"
 
-Point::Point(double a, double b, double c) :
-  position(rt::vector(a, b, c)) {
+Point::Point():
+  x(0.0),
+  y(0.0),
+  z(0.0) {
 }
 
-Point::Point() :
-  position(rt::vector()) {
+Point::Point(double x, double y, double z):
+  x(x),
+  y(y),
+  z(z) {
 }
 
-static Point of_vector(rt::vector vector) {
-  return Point(vector.x, vector.y, vector.z);
+double Point::get_x() const {
+  return x;
 }
 
-bool Point::operator==(const Point& other) const {
-  return position == other.position;
+double Point::get_y() const {
+  return y;
 }
 
-Point Point::operator+(const rt::vector& other) const {
-  rt::vector vector = position + other;
-  return Point(vector.x, vector.y, vector.z);
+double Point::get_z() const {
+  return z;
 }
 
-Point Point::operator-(const rt::vector& other) const {
-  rt::vector vector = position - other;
-  return Point(vector.x, vector.y, vector.z);
+Point Point::operator+(const Vector& vector) const {
+  return Point(
+    x + vector.get_x(),
+    y + vector.get_y(),
+    z + vector.get_z()
+  );
 }
 
-rt::vector Point::operator-(const Point& other) const {
-  return position - other.position;
+Point Point::operator-(const Vector& vector) const {
+  return Point(
+    x - vector.get_x(),
+    y - vector.get_y(),
+    z - vector.get_z()
+  );
 }
 
-std::ostream &operator<<(std::ostream &os, const Point &point) {
-  return os << "Point(" << point.position << ")";
+Vector Point::operator-(const Point& point) const {
+  return Vector(
+    x - point.get_x(),
+    y - point.get_y(),
+    z - point.get_z()
+  );
+}
+
+std::ostream& operator<<(std::ostream &output_stream, const Point& vector) {
+  return output_stream << "(" << vector.get_x() << ", " << vector.get_y() << ", " << vector.get_z() << ")";
 }

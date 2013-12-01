@@ -1,8 +1,8 @@
 #ifndef __SOURCE_H
 #define __SOURCE_H
 
-#include "vector.hpp"
-#include "color.hpp"
+#include "Vector.hpp"
+#include "rt/color.hpp"
 #include "Point.hpp"
 #include "Ray.hpp"
 #include "Light.hpp"

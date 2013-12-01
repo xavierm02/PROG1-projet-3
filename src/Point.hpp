@@ -1,28 +1,29 @@
-#ifndef POINT_H
-#define POINT_H
+#ifndef __POINT_H
+#define __POINT_H
 
-#include <iostream>
-#include "vector.hpp"
+#include "Vector.hpp"
 
 class Point {
-  private:
-    rt::vector position;
-
+  protected:
+    double x;
+    double y;
+    double z;
   public:
-    Point(double a, double b, double c);
     Point();
 
-    static Point of_vector(rt::vector vector);
+    Point(double x, double y, double z);
 
-    bool operator==(const Point& other) const;
+    double get_x() const;
+    double get_y() const;
+    double get_z() const;
 
-    rt::vector operator-(const Point& other) const;
+    Point operator+(const Vector& vector) const;
 
-    Point operator+(const rt::vector& other) const;
+    Point operator-(const Vector& vector) const;
 
-    Point operator-(const rt::vector& other) const;
-
-    friend std::ostream &operator<<(std::ostream &os, const Point &point);
+    Vector operator-(const Point& point) const;
 };
+
+std::ostream& operator<<(std::ostream &output_stream, const Point& vector);
 
 #endif

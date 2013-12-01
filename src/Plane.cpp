@@ -2,23 +2,19 @@
 
 #include "Plane.hpp"
 #include "Parameters.hpp"
-#include "Utils.hpp"
 #include <cmath>
 
-Plane::Plane() :
-  normal_vector(rt::vector()), origin(Point()) {
-}
-
-Plane::Plane(const Point& origin, const rt::vector& normal_vector, const Texture& texture) :
-  normal_vector(normal_vector.unit()), origin(origin) {
-  this->texture = texture;
+Plane::Plane(const Point& origin, const UnitVector& normal_vector, const ObjectTexture& texture):
+  normal_vector(UnitVector(normal_vector)),
+  origin(Point(origin)) {
+  this->texture = texture.wrap();
 }
 
 Plane* Plane::clone() const {
   return new Plane(*this);
 }
 
-rt::vector Plane::get_normal_vector() const {
+UnitVector Plane::get_normal_vector() const {
   return normal_vector;
 }
 
@@ -26,7 +22,7 @@ Point Plane::get_origin() const {
   return origin;
 }
 
-rt::vector Plane::get_normal_vector_at(const Point& /*point*/) const {
+UnitVector Plane::get_normal_vector_at(const Point& /*point*/) const {
   return normal_vector;
 }
 
@@ -44,6 +40,6 @@ Option<double> Plane::get_distance_of_incidence_point_of(const Ray& ray) {
     return Option<double>(a / b);
 }
 
-std::ostream& Plane::print(std::ostream &os) const {
-  return os << "Plane(" << origin << ", " << normal_vector << ")";
+std::ostream& Plane::print(std::ostream &output_stream) const {
+  return output_stream << "Plane(" << origin << ", " << normal_vector << ")";
 }

@@ -1,31 +1,34 @@
 #ifndef __SCENE_H
 #define __SCENE_H
 
-#include "color.hpp"
-#include "vector.hpp"
+#include "Light.hpp"
+#include "UnitVector.hpp"
 #include "Object.hpp"
 #include "Source.hpp"
 #include <iostream>
 #include <vector>
+#include <memory>
+#include "ObjectPoint.hpp"
 
 class Scene {
   private:
-    rt::color background;
+    Light background;
     std::vector<Source> sources;
-    std::vector<Object*> objects;
+    std::vector<std::shared_ptr<Object>> objects;
 
   public:
-    Scene(const rt::color& background);
+    Scene(const Light& background = Light::BLACK);
 
     void add_source(const Source& source);
+    void add_object(std::shared_ptr<Object> object);
     void add_object(const Object& object);
 
     const std::vector<Source> get_sources() const;
-    const std::vector<Object*> get_objects() const;
+    const std::vector<std::shared_ptr<Object>> get_objects() const;
 
     bool obstructs(const Point& beginning, const Point& end) const;
-    Light determine_light_from_sources_at(const Point& point) const;
-    const Option< std::pair<Object*, Point> > get_incidence_point_of(const Ray& ray) const;
+    Light determine_light_from_sources_at(const Point& point, const UnitVector normal_vector) const;
+    const Option<ObjectPoint> get_incidence_point_of(const Ray& ray) const;
     Light determine_light_of(const Ray& ray) const;
 };
 

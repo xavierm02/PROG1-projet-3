@@ -1,29 +1,28 @@
 #ifndef __PLANE_H
 #define __PLANE_H
 
-#include "vector.hpp"
+#include "UnitVector.hpp"
 #include "Ray.hpp"
 #include "Object.hpp"
 #include "Option.hpp"
 
-class Plane : public Object {
+class Plane: public Object {
 protected:
-  rt::vector normal_vector;
+  UnitVector normal_vector;
   Point origin;
 public:
-  Plane();
-  Plane(const Point& origin, const rt::vector& normal_vector, const Texture& texture);
+  Plane(const Point& origin, const UnitVector& normal_vector, const ObjectTexture& texture);
 
   Plane* clone() const;
 
-  rt::vector get_normal_vector() const;
+  UnitVector get_normal_vector() const;
   Point get_origin() const;
 
-  rt::vector get_normal_vector_at(const Point& point) const;
+  UnitVector get_normal_vector_at(const Point& point) const;
 
   Option<double> get_distance_of_incidence_point_of(const Ray& ray);
 
-  std::ostream& print(std::ostream &os) const;
+  std::ostream& print(std::ostream &output_stream) const;
 };
 
 #endif

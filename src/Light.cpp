@@ -1,80 +1,87 @@
 #include "Light.hpp"
-#define _USE_MATH_DEFINES
+
 #include <math.h>
 #include <limits>
-#include "Utils.hpp"
+#include <stdexcept>
+#include <iomanip>
 
-/*
-char f(double x) {
-  return (unsigned char) (atan(x)/M_PI*2*255);
+double Light::light_component_of_color_component(unsigned char color_component) {
+  return (atanh(color_component/256.0));// 256 instead of 255 to avoid infinity
 }
 
-double g(unsigned char x) {
-  return tan(x*M_PI/2/255);// way too slow
-}
-*/
-char f(double x) {
-  return (unsigned char) (tanh(x)*255);
+unsigned char Light::color_component_of_light_component(double light_component) {
+  return (unsigned char) (tanh(light_component)*256);
 }
 
-double g(unsigned char x) {
-  return (atanh(x/255.0));
+Light::Light():
+  red(0.0),
+  green(0.0),
+  blue(0.0) {
 }
 
-Light::Light() :
-  red(0.0), green(0.0), blue(0.0) {
-}
-
-Light::Light(double red, double green, double blue) :
-  red(red), green(green), blue(blue) {
+Light::Light(double red, double green, double blue):
+  red(red),
+  green(green),
+  blue(blue) {
+  if (red < 0 || green < 0 || blue < 0) {
+    throw (std::logic_error("Trying to create a Light with negative component."));
+  }
+  if (red == std::numeric_limits<double>::infinity() || green == std::numeric_limits<double>::infinity() || blue == std::numeric_limits<double>::infinity()) {
+    throw (std::logic_error("Trying to create a Light with infinite component."));
+  }
 }
 
 Light::Light(const rt::color& color) :
-  red(g(color.get_red())), green(g(color.get_green())), blue(g(color.get_blue())) {
+  red(light_component_of_color_component(color.get_red())),
+  green(light_component_of_color_component(color.get_green())),
+  blue(light_component_of_color_component(color.get_blue())) {
+}
+
+double Light::get_red() const {
+  return red;
+}
+
+double Light::get_green() const {
+  return green;
+}
+
+double Light::get_blue() const {
+  return blue;
 }
 
 Light Light::operator+(const Light& light) const {
   return Light(red + light.red, green + light.green, blue + light.blue);
 }
 
-Light operator*(const double& k, const Light& light) {
-  double red = light.red;
-  if (red != 0 ) {
-    red = k * red;
-  }
-  double green = light.green;
-  if (green != 0 ) {
-    green = k * green / 255.0;
-  }
-  double blue = light.blue;
-  if (blue != 0 ) {
-    blue = k * blue / 255.0;
-  }
-  return Light(red, green, blue);
+Light Light::reflect_on(const rt::color& color) const {
+  return Light(
+    color.get_red() / 255.0 * red,
+    color.get_green() / 255.0 * green,
+    color.get_blue() / 255.0 * blue
+  );
 }
 
 rt::color Light::to_color() const {
-  return rt::color(f(red), f(green), f(blue));
+  return rt::color(
+    color_component_of_light_component(red),
+    color_component_of_light_component(green),
+    color_component_of_light_component(blue)
+  );
 }
 
-Light operator^(const rt::color& color, const Light& light) {
-  double red = color.get_red();
-  if (red != 0 ) {
-    red = red / 255.0 * light.red;
-  }
-  double green = color.get_green();
-  if (green != 0 ) {
-    green = green / 255.0 * light.green;
-  }
-  double blue = color.get_blue();
-  if (blue != 0 ) {
-    blue = blue / 255.0 * light.blue;
-  }
-  return Light(red, green, blue);
+Light::operator int() const {
+  return 256 * (
+    256 * color_component_of_light_component(get_red()) +
+    color_component_of_light_component(get_green())
+  ) + color_component_of_light_component(get_blue());
 }
 
-std::ostream &operator<<(std::ostream& os, const Light& light) {
-  return os << "Light(" << light.red << ", " << light.green << ", " << light.blue << ")";
+Light operator*(const double& scalar, const Light& light) {
+  return Light(
+    scalar * light.red,
+    scalar * light.green,
+    scalar * light.blue
+  );
 }
 
 Light Light::WHITE = Light(rt::color::WHITE);
@@ -84,4 +91,6 @@ Light Light::GREEN = Light(rt::color::GREEN);
 Light Light::BLUE = Light(rt::color::BLUE);
 Light Light::GREY = Light(rt::color(127, 127, 127));
 
-
+std::ostream &operator<<(std::ostream& output_stream, const Light& light) {
+  return output_stream << "Light(" << "0x" << std::setfill('0') << std::setw(6) << std::hex << (int) light << ")";
+}

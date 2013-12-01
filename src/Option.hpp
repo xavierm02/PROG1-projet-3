@@ -26,4 +26,13 @@ public:
   }
 };
 
+template <typename T>
+std::ostream& operator<<(std::ostream &output_stream, const Option<T>& option) {
+  if (option.is_defined()) {
+    return output_stream << "Some(" << option.get_value() << ")";
+  } else {
+    return output_stream << "None";
+  }
+}
+
 #endif
