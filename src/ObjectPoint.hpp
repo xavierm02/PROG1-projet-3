@@ -11,6 +11,7 @@ class ObjectPoint: public Point {
   public:
     ObjectPoint();
     ObjectPoint(std::shared_ptr<Object> object, const Point& point);
+    ObjectPoint(const Object& object, const Point& point);
 
     std::shared_ptr<Object> get_object() const;
 

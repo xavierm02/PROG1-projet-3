@@ -11,6 +11,8 @@ protected:
   UnitVector normal_vector;
   Point origin;
 public:
+
+  Plane(const Point& origin, const UnitVector& normal_vector, std::shared_ptr<ObjectTexture> texture);
   Plane(const Point& origin, const UnitVector& normal_vector, const ObjectTexture& texture);
 
   Plane* clone() const;

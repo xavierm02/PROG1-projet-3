@@ -18,19 +18,19 @@ class Vector {
     double get_y() const;
     double get_z() const;
 
-    Vector operator-() const;
-
     bool operator==(const Vector& other) const;
 
     Vector operator+(const Vector& other) const;
-
-    Vector operator-(const Vector& other) const;
 
     Vector operator^(const Vector& other) const;
 
     double operator|(const Vector& other) const;
 
     double norm() const;
+
+    friend Vector operator-(const Vector& vector);
+
+    friend Vector operator-(const Vector& left, const Vector& right);
 
     friend Vector operator*(double scalar, const Vector& vector);
 

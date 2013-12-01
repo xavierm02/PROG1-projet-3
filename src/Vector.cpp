@@ -26,10 +26,6 @@ double Vector::get_z() const {
   return z;
 }
 
-Vector Vector::operator-() const {
-  return Vector(-x, -y, -z);
-}
-
 bool Vector::operator==(const Vector& other) const {
   return
     x == other.x &&
@@ -42,14 +38,6 @@ Vector Vector::operator+(const Vector& other) const {
     x + other.x,
     y + other.y,
     z + other.z
-  );
-}
-
-Vector Vector::operator-(const Vector& other) const {
-  return Vector(
-    x - other.x,
-    y - other.y,
-    z - other.z
   );
 }
 
@@ -70,6 +58,18 @@ double Vector::operator|(const Vector& other) const {
 
 double Vector::norm() const {
   return std::sqrt(x*x + y*y + z*z);
+}
+
+Vector operator-(const Vector& vector) {
+  return Vector(-vector.x, -vector.y, -vector.z);
+}
+
+Vector operator-(const Vector& left, const Vector& right) {
+  return Vector(
+    left.x - right.x,
+    left.y - right.y,
+    left.z - right.z
+  );
 }
 
 Vector operator*(double scalar, const Vector& vector) {

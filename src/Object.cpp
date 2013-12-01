@@ -1,5 +1,13 @@
 #include "Object.hpp"
 
+Object::Object(std::shared_ptr<ObjectTexture> texture):
+  texture(texture) {
+}
+
+Object::Object(const ObjectTexture& texture):
+  Object(texture.wrap()) {
+}
+
 std::shared_ptr<Object> Object::wrap() const {
   return std::shared_ptr<Object>(this->clone());
 }

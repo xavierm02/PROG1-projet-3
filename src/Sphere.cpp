@@ -3,9 +3,16 @@
 
 #include "Sphere.hpp"
 
-Sphere::Sphere(const Point& center, double radius, const ObjectTexture& texture) :
-  center(Point(center)), radius(radius) {
-  this->texture = texture.wrap();
+Sphere::Sphere(const Point& center, double radius, std::shared_ptr<ObjectTexture> texture):
+  Object(texture),
+  center(center),
+  radius(radius) {
+}
+
+Sphere::Sphere(const Point& center, double radius, const ObjectTexture& texture):
+  Object(texture),
+  center(center),
+  radius(radius) {
 }
 
 Sphere* Sphere::clone() const {

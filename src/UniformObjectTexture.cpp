@@ -1,7 +1,7 @@
 #include "UniformObjectTexture.hpp"
 
 UniformObjectTexture::UniformObjectTexture(const PointTexture& point_texture):
-  point_texture(PointTexture(point_texture)) {
+  point_texture(point_texture) {
 }
 
 UniformObjectTexture* UniformObjectTexture::clone() const {
