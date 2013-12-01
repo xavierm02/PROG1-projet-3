@@ -108,7 +108,15 @@ A partir du moteur de lancer de rayons que nous avons codé, nous pouvons penser
 
 \section{Conclusion}
 Lors de ce projet sur la technique du lancer de rayons, nous avons compris à quel point les classes peuvent s'avérer être des outils puissants lors de l'implémentation de problèmes de ce type. En effet, la multiplicité des éléments d'un moteur de lancer de rayon (scène, rayon, lumières, couleurs, objets, caméra, texture, etc) et leur forte intriquation mutuelle conduit à penser les programmes à travers les différentes dépendances des éléments entre eux et donc d'utiliser des classes. Ce projet à conduit à générer des images relativement réalistes, d'une scène contenant des sphères et des plans.
-	
+
+\section{Annexes - Rendu}
+\begin{center}
+\includegraphics[scale=0.3]{demo-1-1.png}
+
+\includegraphics[scale=0.3]{demo-1-2.png}
+
+\includegraphics[scale=0.3]{demo-2.png}
+	\end{center}
 
 
 \end{document}
