@@ -7,7 +7,8 @@
 
 class ObjectTexture {
   public:
-    virtual std::shared_ptr<ObjectTexture> clone() const = 0;
+    virtual ObjectTexture* clone() const = 0;
+    std::shared_ptr<ObjectTexture> wrap() const;
     virtual PointTexture get_point_texture_at(const Point& point) const = 0;
 };
 

@@ -6,11 +6,11 @@
 
 Plane::Plane(const Point& origin, const UnitVector& normal_vector, const ObjectTexture& texture) :
   normal_vector(normal_vector), origin(origin) {
-  this->texture = texture.clone();
+  this->texture = texture.wrap();
 }
 
-std::shared_ptr<Object> Plane::clone() const {
-  return std::shared_ptr<Object>(new Plane(*this));
+Plane* Plane::clone() const {
+  return new Plane(*this);
 }
 
 UnitVector Plane::get_normal_vector() const {

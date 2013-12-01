@@ -1,22 +1,22 @@
 #ifndef __SCENE_H
 #define __SCENE_H
-/*
-#include "color.hpp"
+
+#include "Light.hpp"
 #include "Vector.hpp"
 #include "Object.hpp"
 #include "Source.hpp"
 #include <iostream>
 #include <vector>
 #include <memory>
-
+/*
 class Scene {
   private:
-    rt::color background;
+    Light background;
     std::vector<Source> sources;
     std::vector<std::shared_ptr<Object>> objects;
 
   public:
-    Scene(const rt::color& background);
+    Scene(const Light& background = Light::BLACK);
 
     void add_source(const Source& source);
     void add_object(const Object& object);

@@ -1,5 +1,9 @@
 #include "Object.hpp"
 
+std::shared_ptr<Object> Object::wrap() const {
+  return std::shared_ptr<Object>(this->clone());
+}
+
 std::shared_ptr<ObjectTexture> Object::get_texture() const {
   return texture;
 }

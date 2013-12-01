@@ -14,7 +14,7 @@ private:
 
 public:
   Sphere(const Point& center, double radius, const ObjectTexture& texture);
-  std::shared_ptr<Object> clone() const;
+  Sphere* clone() const;
 
   Point get_center();
   double get_radius();

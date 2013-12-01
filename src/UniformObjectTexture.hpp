@@ -8,7 +8,7 @@ class UniformObjectTexture: public ObjectTexture {
     PointTexture point_texture;
   public:
     UniformObjectTexture(const PointTexture& point_texture);
-    std::shared_ptr<ObjectTexture> clone() const;
+    UniformObjectTexture* clone() const;
     PointTexture get_point_texture() const;
     PointTexture get_point_texture_at(const Point& /*point*/) const;
 };

@@ -13,7 +13,9 @@ protected:
   std::shared_ptr<ObjectTexture> texture;
 
 public:
-  virtual std::shared_ptr<Object> clone() const = 0;
+  virtual Object* clone() const = 0;
+
+  std::shared_ptr<Object> wrap() const;
 
   std::shared_ptr<ObjectTexture> get_texture() const;
 

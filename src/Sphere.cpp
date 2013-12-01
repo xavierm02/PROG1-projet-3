@@ -5,11 +5,11 @@
 
 Sphere::Sphere(const Point& center, double radius, const ObjectTexture& texture) :
   center(center), radius(radius) {
-  this->texture = texture.clone();
+  this->texture = texture.wrap();
 }
 
-std::shared_ptr<Object> Sphere::clone() const {
-  return std::shared_ptr<Object>(new Sphere(*this));
+Sphere* Sphere::clone() const {
+  return new Sphere(*this);
 }
 
 Point Sphere::get_center() {

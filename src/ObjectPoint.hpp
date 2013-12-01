@@ -1,3 +1,6 @@
+#ifndef __OBJECT_POINT_H
+#define __OBJECT_POINT_H
+
 #include "Point.hpp"
 #include <memory>
 #include "Object.hpp"
@@ -10,3 +13,5 @@ class ObjectPoint: public Point {
 
     std::shared_ptr<Object> get_object() const;
 };
+
+#endif

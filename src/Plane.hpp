@@ -13,7 +13,7 @@ protected:
 public:
   Plane(const Point& origin, const UnitVector& normal_vector, const ObjectTexture& texture);
 
-  std::shared_ptr<Object> clone() const;
+  Plane* clone() const;
 
   UnitVector get_normal_vector() const;
   Point get_origin() const;
