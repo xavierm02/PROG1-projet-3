@@ -55,7 +55,7 @@ La différence avec la classe \emph{Color} est que les composantes ne sont pas c
 Ceci permet d'additionner des lumières en additionnant simplement composante par composante.
 
 
-Nous avons codé une fonction permettant de transformer une lumière en une couleur (l'image renvoyée à la fin ne comprend que des couleurs ayant des composantes comprises entre $0$ et $255$. Pour cela nous utilisons la fonction $x \rightarrow 255\tanh(x)$. 
+Nous avons codé une fonction permettant de transformer une lumière en une couleur (l'image renvoyée à la fin ne comprend que des couleurs ayant des composantes comprises entre $0$ et $255$). Pour cela nous utilisons la fonction $x \rightarrow 255\tanh(x)$. 
 
 \subsubsection{Ls classes \emph{ObjectTexture} et \emph{PointTexture}}
 	La couleur d'un pixel dépend de la texture de l'objet visé. En effet, l'effet visuel ne sera pas le même suivant si l'objet est brillant, mate, transparent\dots. La classe \emph{PointTexture} permet donc de représenter ces différentes caractéristiques et d'en ajouter sans devoir red\'efinir tous les constructeurs des classes h\'eritant de \emph{Object}. Elle ne contient pour l'instant que la couleur mais il est ais\'e de la modifier pour ajouter de nouvelles caract\'eristiques.
