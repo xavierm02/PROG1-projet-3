@@ -85,7 +85,19 @@ On obtient ainsi une lumière que l'on transforme en couleur grâce à la foncti
 
 Remarque : Cette première version de moteur de lancer de rayon ne tient compte que de l'aspect mâte des objets, on ne considère pas la reflection ni la transparence des objets.
 
+\section{Ameriolations}
 
+A partir du moteur de lancer de rayons que nous avons codé, nous pouvons penser à diverses améliorations.
+\subsection{Amélioration visant à rendre l'image plus réaliste}
+	\begin{itemize}
+		\item Rendre la classe Texture un peu plus exhaustive en prenant en compte la transparance, un coefficient de reflexivité\dots
+		\item Imaginer des objets ayant une texture non uniforme.
+	\end{itemize}
+
+
+
+\section{Conclusion}
+Lors de ce projet sur la technique du lancer de rayons, nous avons compris à quelle point les classes peuvent s'avérer être des outils puissant lors de l'implémentation de problèmes de ce type. En effet, la multiplicité des éléments d'un moteur de lancer de rayon (scène, rayon, lumières, couleurs, objets, caméra, texture, etc) et leur forte intriquation mutuelle conduit à penser les programmes à travers les différentes dépendances des éléments entre eux et donc d'utiliser des classes. Ce projet à conduit à générer des images relativement réalistes, d'une scène contenant des sphères et des plans.
 	
 
 
