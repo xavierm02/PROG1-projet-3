@@ -34,13 +34,15 @@ namespace rt {
 	{
 		if(x < 0 || y < 0 || x >= width() || y >= height()) return color(0,0,0,0);
 		char* pixel = ((char*)data->pixels) + y*data->pitch + x*4;
-		return color(pixel[0],pixel[1],pixel[2],pixel[3]);
+		Uint8 r,g,b,a;
+		SDL_GetRGBA(*((Uint32*)pixel), data->format, &r, &g, &b, &a);
+		return color(r,g,b,a);
 	}
 
 	void image::set_pixel(int x, int y, const color& c)
 	{
 		if(x < 0 || y < 0 || x >= width() || y >= height()) return;
-		uint32_t col = SDL_MapRGB(data->format, c.get_red(), c.get_green(), c.get_blue());
+		uint32_t col = SDL_MapRGBA(data->format, c.get_red(), c.get_green(), c.get_blue(), c.get_alpha());
 		char* pixel = ((char*)data->pixels) + y*data->pitch + x*4;
 		*(uint32_t*)pixel = col;
 	}
